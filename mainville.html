@@ -188,9 +188,8 @@
 
   .about-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px;align-items:center;}
   .about-photo{position:relative;justify-self:center;}
-  .about-photo img{width:280px;height:280px;object-fit:cover;border-radius:50%;border:6px solid #fff;box-shadow:var(--shadow);}
-  .badge-1er{position:absolute;bottom:6px;right:6px;width:82px;height:82px;border-radius:50%;background:var(--iad-navy);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;font-weight:800;font-size:.56rem;text-align:center;border:4px solid #fff;box-shadow:var(--shadow);animation:pulseRingBlue 2.6s infinite;}
-  .badge-1er span{font-size:1.3rem;line-height:1;font-family:'Sora',sans-serif;color:var(--iad-cyan);}
+  .about-photo img:not(.badge-1er){width:280px;height:280px;object-fit:cover;border-radius:50%;border:6px solid #fff;box-shadow:var(--shadow);}
+  .badge-1er{position:absolute;bottom:6px;right:6px;width:82px;height:82px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;border:4px solid #fff;box-shadow:var(--shadow);object-fit:contain;padding:12px;box-sizing:border-box;animation:pulseRingBlue 2.6s infinite;}
   .about-text h2{font-size:clamp(1.6rem,3vw,2.1rem);color:var(--iad-navy);margin:4px 0 4px;}
   .about-text .role{color:var(--iad-blue);font-weight:600;font-size:.92rem;margin-bottom:16px;}
   .about-contact{display:flex;flex-wrap:wrap;gap:22px;margin:22px 0 24px;}
@@ -482,10 +481,10 @@
 
 <section id="apropos" style="background:var(--iad-tint-2);">
   <div class="wrap">
-    <div class="about-grid reveal">
+    <div class="about-grid">
       <div class="about-photo">
         <img src="images/francis-fernandes.jpg" alt="Francis Fernandes, conseiller iad">
-        <div class="badge-1er"><span>18</span>ANS IAD</div>
+        <img src="images/iad-logo.png" alt="Logo iad" class="badge-1er" loading="lazy">
       </div>
       <div class="about-text">
         <span class="eyebrow">Votre conseiller local</span>
