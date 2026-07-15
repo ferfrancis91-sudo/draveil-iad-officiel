@@ -273,7 +273,7 @@
   /* ===== A PROPOS ===== */
   .about-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px;align-items:center;}
   .about-photo{position:relative;justify-self:center;}
-  .about-photo img{
+  .about-photo img:not(.charte-badge){
     width:280px;height:280px;object-fit:cover;border-radius:50%;
     border:6px solid #fff;box-shadow:var(--shadow);
   }
@@ -375,7 +375,7 @@
   .pb-o{color:var(--gold);}
   .pb-legal{position:absolute;bottom:8px;left:28px;right:28px;color:rgba(255,255,255,.75);font-size:.58rem;line-height:1.4;}
   @media (max-width:640px){ .propertips-banner{padding:20px 20px 50px;} .pb-wordmark{position:static;margin-bottom:10px;text-align:left;} }
-  .charte-badge{position:absolute;top:-14px;left:-14px;width:64px;height:64px;border-radius:50%;border:3px solid #fff;box-shadow:var(--shadow);background:#fff;object-fit:cover;}
+  .charte-badge{position:absolute;top:-14px;left:-14px;width:64px;height:64px;border-radius:50%;border:3px solid #fff;box-shadow:var(--shadow);background:#fff;object-fit:contain;padding:10px;box-sizing:border-box;}
 
   /* ===== TESTIMONIALS ===== */
   .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
@@ -635,7 +635,7 @@
     <div class="about-grid reveal">
       <div class="about-photo">
         <img src="images/francis-fernandes.jpg" alt="Francis Fernandes, conseiller iad">
-        <img src="images/iad-18ans.gif" alt="Badge officiel 18 ans iad" class="charte-badge" loading="lazy">
+        <img src="images/iad-logo.png" alt="Logo officiel iad" class="charte-badge" loading="lazy">
         <div class="badge-1er">
           <span>18</span>
           ANS IAD
