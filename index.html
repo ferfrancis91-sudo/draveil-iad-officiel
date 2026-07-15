@@ -144,15 +144,6 @@
   .network-source{font-size:.62rem;opacity:.75;max-width:520px;margin-top:10px;line-height:1.5;}
   @media (max-width:760px){ .network-banner .wrap{flex-direction:column;text-align:center;} .network-mark{flex-direction:column;} }
 
-  /* ===== ANNIVERSARY BADGE ===== */
-  .badge-1er{
-    position:absolute;bottom:6px;right:6px;width:82px;height:82px;border-radius:50%;
-    background:var(--iad-navy);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;
-    font-weight:800;font-size:.56rem;text-align:center;border:4px solid #fff;box-shadow:var(--shadow);
-    animation:pulseRingBlue 2.6s infinite;
-  }
-  .badge-1er span{font-size:1.3rem;line-height:1;font-family:'Sora',sans-serif;color:var(--iad-cyan);}
-
   /* ===== COOKIE BANNER ===== */
   .cookie-banner{
     position:fixed;left:16px;right:16px;bottom:16px;z-index:100;max-width:640px;margin:0 auto;
@@ -273,16 +264,15 @@
   /* ===== A PROPOS ===== */
   .about-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px;align-items:center;}
   .about-photo{position:relative;justify-self:center;}
-  .about-photo img:not(.charte-badge){
+  .about-photo img:not(.badge-1er){
     width:280px;height:280px;object-fit:cover;border-radius:50%;
     border:6px solid #fff;box-shadow:var(--shadow);
   }
   .badge-1er{
     position:absolute;bottom:6px;right:6px;width:74px;height:74px;border-radius:50%;
-    background:var(--iad-blue);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;
-    font-weight:800;font-size:.6rem;text-align:center;border:4px solid #fff;box-shadow:var(--shadow);
+    background:#fff;display:flex;align-items:center;justify-content:center;
+    border:4px solid #fff;box-shadow:var(--shadow);object-fit:contain;padding:10px;box-sizing:border-box;
   }
-  .badge-1er span{font-size:1.15rem;line-height:1;}
   .about-text h2{font-size:clamp(1.6rem,3vw,2.1rem);color:var(--iad-navy);margin:4px 0 4px;}
   .about-text .role{color:var(--iad-blue);font-weight:600;font-size:.92rem;margin-bottom:16px;}
   .about-contact{display:flex;flex-wrap:wrap;gap:22px;margin:22px 0 24px;}
@@ -375,8 +365,6 @@
   .pb-o{color:var(--gold);}
   .pb-legal{position:absolute;bottom:8px;left:28px;right:28px;color:rgba(255,255,255,.75);font-size:.58rem;line-height:1.4;}
   @media (max-width:640px){ .propertips-banner{padding:20px 20px 50px;} .pb-wordmark{position:static;margin-bottom:10px;text-align:left;} }
-  .charte-badge{position:absolute;top:-14px;left:-14px;width:64px;height:64px;border-radius:50%;border:3px solid #fff;box-shadow:var(--shadow);background:#fff;object-fit:contain;padding:10px;box-sizing:border-box;}
-
   /* ===== TESTIMONIALS ===== */
   .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
   .testi{
@@ -632,14 +620,10 @@
 
 <section id="apropos" style="background:var(--iad-tint-2);">
   <div class="wrap">
-    <div class="about-grid reveal">
+    <div class="about-grid">
       <div class="about-photo">
         <img src="images/francis-fernandes.jpg" alt="Francis Fernandes, conseiller iad">
-        <img src="images/iad-logo.png" alt="Logo officiel iad" class="charte-badge" loading="lazy">
-        <div class="badge-1er">
-          <span>18</span>
-          ANS IAD
-        </div>
+        <img src="images/iad-logo.png" alt="Logo iad" class="badge-1er" loading="lazy">
       </div>
       <div class="about-text">
         <span class="eyebrow">Votre conseiller local</span>
