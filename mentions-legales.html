@@ -3,42 +3,69 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mentions légales & Confidentialité | Francis Fernandes - Conseiller iad</title>
+<title>Mentions légales & Politique de confidentialité | Francis Fernandes - Conseiller iad</title>
+<meta name="description" content="Mentions légales, politique de confidentialité RGPD et gestion des cookies du site de Francis Fernandes, conseiller iad indépendant à Draveil.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --iad-blue:#0B5FFF; --iad-navy:#071B42; --iad-navy-2:#0D2A5C;
-    --iad-tint:#EAF2FF; --iad-tint-2:#F5F9FF; --gold:#F2A93B; --gold-2:#F7C978;
+    --iad-blue:#0B5FFF; --iad-cyan:#4FC3E8; --iad-navy:#071B42; --iad-navy-2:#0D2A5C;
+    --iad-tint:#EAF2FF; --iad-tint-2:#F5F9FF; --cream:#F4EDE2; --cream-2:#EDE3D2; --gold:#F2A93B; --gold-2:#F7C978;
     --ink:#0B1220; --ink-soft:#4A5568; --line:#E1E9F7;
   }
   *{box-sizing:border-box;margin:0;padding:0;}
   body{font-family:'Inter',sans-serif;color:var(--ink);line-height:1.7;background:#fff;}
-  h1,h2{font-family:'Sora',sans-serif;letter-spacing:-0.02em;color:var(--iad-navy);}
+  h1,h2,h3{font-family:'Sora',sans-serif;letter-spacing:-0.02em;color:var(--iad-navy);}
   a{color:var(--iad-blue);}
-  .wrap{max-width:820px;margin:0 auto;padding:0 24px;}
-  header{border-bottom:1px solid var(--line);padding:18px 0;}
+  .wrap{max-width:860px;margin:0 auto;padding:0 24px;}
+  header{position:sticky;top:0;background:rgba(244,237,226,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--cream-2);padding:14px 0;z-index:10;}
   .nav{display:flex;align-items:center;justify-content:space-between;}
   .logo{display:flex;align-items:center;gap:10px;font-family:'Sora',sans-serif;font-weight:800;color:var(--iad-navy);}
-  .logo img{width:36px;height:36px;border-radius:50%;}
+  .logo img{width:36px;height:36px;border-radius:10px;}
   .back{font-size:.85rem;font-weight:600;color:var(--iad-blue);}
   main{padding:56px 0 90px;}
   h1{font-size:2rem;margin-bottom:8px;}
-  .updated{color:var(--ink-soft);font-size:.85rem;margin-bottom:44px;}
-  h2{font-size:1.2rem;margin:40px 0 12px;padding-top:8px;border-top:1px solid var(--line);}
+  .updated{color:var(--ink-soft);font-size:.85rem;margin-bottom:20px;}
+  .toc{background:var(--iad-tint-2);border:1px solid var(--line);border-radius:14px;padding:20px 24px;margin-bottom:44px;}
+  .toc strong{display:block;margin-bottom:10px;font-size:.85rem;color:var(--iad-navy);}
+  .toc ol{padding-left:20px;font-size:.88rem;}
+  .toc li{margin-bottom:4px;}
+  h2{font-size:1.2rem;margin:44px 0 12px;padding-top:20px;border-top:1px solid var(--line);}
   h2:first-of-type{border-top:none;padding-top:0;margin-top:0;}
+  h3{font-size:.98rem;margin:20px 0 8px;color:var(--ink);}
   p, li{color:var(--ink-soft);font-size:.95rem;margin-bottom:10px;}
   ul{padding-left:20px;margin-bottom:14px;}
   .info-table{width:100%;border-collapse:collapse;margin:14px 0 20px;}
-  .info-table td{padding:9px 0;border-bottom:1px solid var(--line);font-size:.92rem;}
-  .info-table td:first-child{color:var(--ink-soft);width:45%;}
+  .info-table td{padding:9px 0;border-bottom:1px solid var(--line);font-size:.92rem;vertical-align:top;}
+  .info-table td:first-child{color:var(--ink-soft);width:42%;}
   .info-table td:last-child{color:var(--ink);font-weight:600;}
+  .purpose-table{width:100%;border-collapse:collapse;margin:14px 0 24px;font-size:.85rem;}
+  .purpose-table th{background:var(--iad-navy);color:#fff;text-align:left;padding:10px 12px;font-family:'Sora',sans-serif;font-size:.72rem;text-transform:uppercase;letter-spacing:.04em;}
+  .purpose-table td{padding:10px 12px;border-bottom:1px solid var(--line);color:var(--ink-soft);}
+  .purpose-table tr:nth-child(even) td{background:var(--iad-tint-2);}
+  .rights-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0 20px;}
+  .right-card{background:var(--cream);border:1px solid var(--cream-2);border-radius:12px;padding:14px 16px;}
+  .right-card strong{display:block;color:var(--iad-navy);font-size:.85rem;margin-bottom:4px;}
+  .right-card span{font-size:.82rem;color:var(--ink-soft);}
   footer{background:var(--iad-navy);color:rgba(255,255,255,.55);padding:28px 0;font-size:.8rem;text-align:center;}
   footer a{color:rgba(255,255,255,.8);}
+  @media (max-width:640px){ .rights-grid{grid-template-columns:1fr;} }
+  .cookie-banner{position:fixed;left:16px;right:16px;bottom:16px;z-index:100;max-width:640px;margin:0 auto;background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 20px 50px -20px rgba(11,31,90,.35);padding:20px 22px;display:none;}
+  .cookie-banner.show{display:block;}
+  .cookie-banner p{font-size:.82rem;color:var(--ink-soft);margin-bottom:14px;}
+  .cookie-banner a{color:var(--iad-blue);font-weight:600;}
+  .cookie-actions{display:flex;gap:10px;flex-wrap:wrap;}
+  .cookie-actions button{font-family:'Inter',sans-serif;font-weight:700;font-size:.82rem;padding:10px 18px;border-radius:100px;border:none;cursor:pointer;}
+  #cookieAccept{background:var(--iad-navy);color:#fff;}
+  #cookieDecline{background:var(--iad-tint-2);color:var(--iad-navy);border:1px solid var(--line);}
+  .draft-ribbon{background:var(--gold);color:var(--iad-navy);text-align:center;font-size:.76rem;font-weight:700;padding:8px 16px;}
+  .draft-ribbon a{color:var(--iad-navy);text-decoration:underline;}
 </style>
 </head>
 <body>
+
+<div class="draft-ribbon">Maquette de travail — en attente de validation par le pôle Communication iad (<a href="mailto:validation@iadfrance.fr">validation@iadfrance.fr</a>) avant toute mise en ligne officielle.</div>
 
 <header>
   <div class="wrap nav">
@@ -51,62 +78,132 @@
 </header>
 
 <main class="wrap">
-  <h1>Mentions légales & Confidentialité</h1>
-  <p class="updated">Dernière mise à jour : juillet 2026 — Site estimation-draveil</p>
+  <h1>Mentions légales & Politique de confidentialité</h1>
+  <p class="updated">Dernière mise à jour : juillet 2026</p>
 
-  <h2>Éditeur du site</h2>
+  <div class="toc">
+    <strong>Sommaire</strong>
+    <ol>
+      <li><a href="#editeur">Éditeur du site</a></li>
+      <li><a href="#hebergement">Hébergement</a></li>
+      <li><a href="#propriete">Propriété intellectuelle</a></li>
+      <li><a href="#donnees">Données personnelles (RGPD)</a></li>
+      <li><a href="#cookies">Gestion des cookies</a></li>
+      <li><a href="#mediation">Médiation de la consommation</a></li>
+      <li><a href="#responsabilite">Limitation de responsabilité</a></li>
+    </ol>
+  </div>
+
+  <h2 id="editeur">1. Éditeur du site</h2>
   <table class="info-table">
     <tr><td>Nom et prénom</td><td>Francis Fernandes</td></tr>
-    <tr><td>Statut</td><td>Entrepreneur individuel — Agent commercial</td></tr>
-    <tr><td>Immatriculation RSAC</td><td>419 614 441 R.S.A.C. Évry</td></tr>
+    <tr><td>Statut</td><td>Entrepreneur individuel — Agent commercial indépendant</td></tr>
+    <tr><td>Immatriculation RSAC</td><td>419 614 441 — R.S.A.C. d'Évry</td></tr>
     <tr><td>SIRET</td><td>419 614 441 00030</td></tr>
-    <tr><td>Adresse professionnelle</td><td>151B rue Pierre Brossolette, 91210 Draveil</td></tr>
+    <tr><td>Adresse professionnelle</td><td>151 bis rue Pierre Brossolette, 91210 Draveil</td></tr>
     <tr><td>Téléphone</td><td>06 16 12 77 18</td></tr>
     <tr><td>E-mail</td><td>francis.fernandes@iadfrance.com</td></tr>
     <tr><td>Directeur de la publication</td><td>Francis Fernandes</td></tr>
   </table>
-  <p>Francis Fernandes exerce son activité d'agent commercial en immobilier au nom et pour le compte de la société <strong>I@D France SAS</strong>, dont il ne détient pas la carte professionnelle en propre :</p>
+  <p>Francis Fernandes exerce son activité d'agent commercial en immobilier, à titre indépendant et sans lien de subordination, au nom et pour le compte de la société <strong>I@D France SAS</strong>, dont il ne détient pas la carte professionnelle en propre :</p>
   <table class="info-table">
-    <tr><td>Société mandante</td><td>I@D France SAS</td></tr>
+    <tr><td>Société mandante</td><td>I@D France SAS, au capital de 100 000 €</td></tr>
     <tr><td>Siège social</td><td>1 allée de la Ferme de Varâtre, Immeuble Carré Haussmann III, 77127 Lieusaint</td></tr>
-    <tr><td>RCS</td><td>Melun B 820 923 126</td></tr>
+    <tr><td>RCS</td><td>Melun 503 676 421</td></tr>
+    <tr><td>N° TVA intracommunautaire</td><td>FR38503676421</td></tr>
     <tr><td>Carte professionnelle</td><td>Transaction sur immeubles et fonds de commerce n° CPI 7702 2018 000 028 002, délivrée par la CCI de Seine-et-Marne</td></tr>
-    <tr><td>Garantie financière</td><td>CEGC — 16 rue Hoche, Tour Kupka B, 92800 Puteaux, à hauteur de 110 000 € (sans manipulation de fonds)</td></tr>
-    <tr><td>Assurance RC Pro</td><td>Generali IARD, n° AN260587/14973 — 89 rue Taitbout, 75009 Paris</td></tr>
+    <tr><td>Garantie financière</td><td>CEGC — 59 avenue Pierre Mendès-France, 75013 Paris, à hauteur de 110 000 € (sans manipulation de fonds)</td></tr>
+    <tr><td>Assurance RC Pro</td><td>Generali IARD, n° AN260587 — 89 rue Taitbout, 75009 Paris</td></tr>
+  </table>
+  <p>Conformément à l'article L.111-6 du Code de la consommation et à l'arrêté du 26 janvier 2022, le barème d'honoraires applicable est consultable sur la page <a href="honoraires.html">Barème d'honoraires</a>.</p>
+
+  <h2 id="hebergement">2. Hébergement</h2>
+  <p>Ce site est hébergé par <strong>GitHub, Inc.</strong> (service GitHub Pages) — 88 Colin P. Kelly Jr Street, San Francisco, CA 94107, États-Unis.</p>
+
+  <h2 id="propriete">3. Propriété intellectuelle</h2>
+  <p>La marque, le logo « iAD Immobilier » et la charte graphique du réseau sont la propriété exclusive d'I@D France (ou d'I@D International selon les éléments). Leur reproduction sur ce site est faite dans le cadre de l'usage autorisé aux conseillers du réseau pour la promotion de leur activité, conformément au Contrat de licence de marque conclu entre Francis Fernandes et I@D France. Toute autre reproduction, à des fins autres que celles prévues par ce contrat, est interdite sans autorisation écrite préalable d'I@D France.</p>
+  <p>Les textes, visuels et éléments propres à ce site (hors éléments de marque iad) sont la propriété de Francis Fernandes. Toute reproduction est soumise à son autorisation préalable.</p>
+
+  <h2 id="donnees">4. Données personnelles (RGPD)</h2>
+  <p>Francis Fernandes traite vos données personnelles lorsque vous naviguez sur ce site et interagissez avec lui, notamment lorsque vous complétez le formulaire de contact ou le simulateur. Ce traitement est réalisé conjointement avec <strong>I@D France</strong>, en qualité de <strong>responsables conjoints de traitement</strong>, conformément à la loi n° 78-17 du 6 janvier 1978 modifiée et au Règlement (UE) 2016/679 (le « RGPD »).</p>
+
+  <h3>4.1 Données collectées</h3>
+  <ul>
+    <li><strong>Données que vous nous transmettez directement</strong> : nom, numéro de téléphone, commune, type de bien, délai de vente envisagé, surface habitable (via le simulateur), consentement au recontact.</li>
+    <li><strong>Données collectées indirectement</strong> : données techniques de navigation (via les cookies décrits ci-dessous), et le cas échéant votre position géographique si vous l'autorisez sur la carte interactive.</li>
+  </ul>
+
+  <h3>4.2 Finalités, base légale et durée de conservation</h3>
+  <table class="purpose-table">
+    <thead><tr><th>Finalité</th><th>Base légale</th><th>Durée de conservation</th></tr></thead>
+    <tbody>
+      <tr><td>Traitement de votre demande d'avis de valeur ou de contact via le formulaire</td><td>Consentement (case à cocher) / intérêt légitime</td><td>3 ans à compter de la collecte ou du dernier contact</td></tr>
+      <tr><td>Réponse via le simulateur de prix au m²</td><td>Intérêt légitime</td><td>Non conservée si aucune demande de contact n'est envoyée</td></tr>
+      <tr><td>Gestion des réclamations</td><td>Intérêt légitime</td><td>5 ans à compter de la fin du litige</td></tr>
+      <tr><td>Gestion des demandes d'exercice de droits</td><td>Obligation légale</td><td>Le temps du traitement de la demande</td></tr>
+    </tbody>
   </table>
 
-  <h2>Hébergement</h2>
-  <p>Ce site est hébergé par <strong>GitHub Pages</strong>, un service de GitHub, Inc. — 88 Colin P Kelly Jr St, San Francisco, CA 94107, États-Unis.</p>
+  <h3>4.3 Destinataires de vos données</h3>
+  <p>Vos données sont destinées à Francis Fernandes et, le cas échéant, aux services internes d'I@D France (services clients, marketing/communication, technique, juridique) dans le cadre du suivi de votre demande. Elles peuvent également être transmises à l'outil tiers utilisé pour la réception du formulaire (Google Apps Script / Google Sheets), sous réserve des garanties contractuelles de ce prestataire. I@D France ne vend ni ne cède vos données à des partenaires commerciaux sans base légale appropriée.</p>
 
-  <h2>Propriété intellectuelle</h2>
-  <p>La marque, le logo et la charte graphique « iad » sont la propriété exclusive d'I@D France. Leur reproduction sur ce site est faite dans le cadre de l'usage autorisé aux conseillers du réseau pour la promotion de leur activité. Toute autre reproduction est interdite sans autorisation écrite d'I@D France.</p>
-  <p>Les textes, visuels et éléments propres à ce site (hors éléments de marque iad) sont la propriété de Francis Fernandes.</p>
+  <h3>4.4 Vos droits</h3>
+  <div class="rights-grid">
+    <div class="right-card"><strong>Droit d'accès</strong><span>Obtenir la confirmation que vos données sont traitées et en recevoir une copie.</span></div>
+    <div class="right-card"><strong>Droit de rectification</strong><span>Faire corriger des données inexactes ou incomplètes.</span></div>
+    <div class="right-card"><strong>Droit d'effacement</strong><span>Demander la suppression de vos données dans les cas prévus par la loi.</span></div>
+    <div class="right-card"><strong>Droit d'opposition</strong><span>Vous opposer au traitement pour des raisons tenant à votre situation particulière.</span></div>
+    <div class="right-card"><strong>Droit à la limitation</strong><span>Demander le gel temporaire de l'utilisation de vos données.</span></div>
+    <div class="right-card"><strong>Droit à la portabilité</strong><span>Recevoir vos données dans un format réutilisable, lorsque applicable.</span></div>
+  </div>
+  <p>Pour exercer ces droits, contactez Francis Fernandes à <a href="mailto:francis.fernandes@iadfrance.com">francis.fernandes@iadfrance.com</a>, ou le Délégué à la protection des données d'I@D France :</p>
+  <table class="info-table">
+    <tr><td>E-mail du DPO</td><td><a href="mailto:privacy@iadgroup.fr">privacy@iadgroup.fr</a></td></tr>
+    <tr><td>Adresse postale</td><td>I@D France SAS, Service Juridique, Allée de la Ferme de Varâtre, Immeuble Carré Haussmann III, 77127 Lieusaint — à l'attention du DPO</td></tr>
+  </table>
+  <p>En l'absence de réponse satisfaisante, vous pouvez introduire une réclamation auprès de la <strong>CNIL</strong> (Commission Nationale de l'Informatique et des Libertés) : <a href="https://www.cnil.fr" target="_blank" rel="noopener">www.cnil.fr</a>.</p>
 
-  <h2>Données personnelles (RGPD)</h2>
-  <p>Les informations collectées via le formulaire d'estimation ou de contact de ce site sont destinées exclusivement à Francis Fernandes, dans le cadre du traitement de votre demande d'estimation ou de mise en relation immobilière. Elles ne sont ni vendues, ni cédées à des tiers en dehors du réseau iad.</p>
+  <h2 id="cookies">5. Gestion des cookies</h2>
+  <p>Ce site dépose uniquement des cookies et technologies similaires <strong>strictement nécessaires</strong> à son fonctionnement, notamment :</p>
   <ul>
-    <li>Base légale : consentement de la personne concernée (envoi volontaire du formulaire)</li>
-    <li>Destinataire(s) : Francis Fernandes, et le cas échéant les services internes d'I@D France</li>
-    <li>Durée de conservation : le temps nécessaire au traitement de la demande, puis archivage limité à des fins de suivi commercial</li>
+    <li>un cookie de préférence (<code>cookieConsent</code>) mémorisant votre choix concernant la bannière de consentement ;</li>
+    <li>un stockage local (localStorage) utilisé par la carte interactive pour mémoriser temporairement les résultats de géolocalisation des adresses affichées, afin d'éviter des requêtes répétées.</li>
   </ul>
-  <p>Conformément à la loi « Informatique et Libertés » et au RGPD (UE 2016/679), vous disposez d'un droit d'accès, de rectification, de suppression et d'opposition sur vos données. Pour l'exercer, contactez francis.fernandes@iadfrance.com ou privacy@iadgroup.fr.</p>
+  <p>Ce site ne dépose <strong>aucun cookie publicitaire, de mesure d'audience tiers ou de traçage cross-site</strong>. À ce titre, conformément aux recommandations de la CNIL, ces cookies strictement nécessaires ne requièrent pas de consentement préalable, mais nous vous informons de leur usage via la bannière affichée lors de votre première visite. Vous pouvez à tout moment supprimer ces données via les réglages de votre navigateur.</p>
 
-  <h2>Cookies</h2>
-  <p>Ce site n'utilise pas de cookies de tracking publicitaire. Seuls des cookies techniques strictement nécessaires au bon fonctionnement du site (dont la mémorisation locale des repères de la carte interactive) peuvent être utilisés.</p>
+  <h2 id="mediation">6. Médiation de la consommation</h2>
+  <p>Conformément à l'article L.616-1 du Code de la consommation, en cas de litige non résolu directement avec Francis Fernandes, vous pouvez recourir gratuitement au service de médiation dont dépend I@D France. Les coordonnées du médiateur compétent sont disponibles sur <a href="https://www.iadfrance.fr/mentions-legales" target="_blank" rel="noopener">iadfrance.fr/mentions-légales</a>. Vous pouvez également consulter la plateforme européenne de règlement en ligne des litiges : <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener">ec.europa.eu/consumers/odr</a>.</p>
 
-  <h2>Médiation de la consommation</h2>
-  <p>Conformément à l'article L.616-1 du Code de la consommation, en cas de litige, vous pouvez recourir gratuitement au service de médiation dont dépend I@D France. Les coordonnées du médiateur compétent sont disponibles sur <a href="https://www.iadfrance.fr/mentions-legales" target="_blank">iadfrance.fr/mentions-legales</a>.</p>
-
-  <h2>Limitation de responsabilité</h2>
-  <p>Les informations et simulateurs présents sur ce site (simulateur de prix au m², carte interactive, agenda) sont fournis à titre indicatif et ne constituent pas une offre contractuelle. Seule une visite du bien par Francis Fernandes permet d'établir une estimation précise ; seuls les sites officiels de la ville de Draveil font foi pour les horaires, événements et informations administratives.</p>
+  <h2 id="responsabilite">7. Limitation de responsabilité</h2>
+  <p>Les informations et simulateurs présents sur ce site (notamment le simulateur de prix au m²) sont fournis à titre purement indicatif et ne constituent ni une offre contractuelle, ni un avis de valeur au sens réglementaire. Conformément à son statut d'agent commercial indépendant, Francis Fernandes n'est pas habilité à réaliser une expertise ou une estimation certifiée : seul un avis de valeur réalisé après visite du bien permet d'approcher sa valeur de marché. Ce site ne saurait engager la responsabilité de Francis Fernandes ou d'I@D France au titre des informations générales, historiques ou pratiques qu'il contient.</p>
 
 </main>
 
 <footer>
   <div class="wrap">
-    © 2026 Francis Fernandes — Conseiller iad · <a href="index.html">Retour à l'accueil</a>
+    © 2026 Francis Fernandes — Conseiller iad · <a href="index.html">Retour à l'accueil</a> · <a href="honoraires.html">Barème d'honoraires</a>
   </div>
 </footer>
+
+<div class="cookie-banner" id="cookieBanner">
+  <p>Ce site utilise des cookies strictement nécessaires à son fonctionnement (carte interactive, formulaire de contact). Aucun cookie publicitaire ou de mesure d'audience tiers n'est déposé sans votre consentement.</p>
+  <div class="cookie-actions">
+    <button id="cookieAccept">Tout accepter</button>
+    <button id="cookieDecline">Continuer sans accepter</button>
+  </div>
+</div>
+
+<script>
+  (function(){
+    var banner = document.getElementById('cookieBanner');
+    var accept = document.getElementById('cookieAccept');
+    var decline = document.getElementById('cookieDecline');
+    try{ if(!localStorage.getItem('cookieConsent')){ banner.classList.add('show'); } }catch(e){}
+    function setConsent(val){ try{ localStorage.setItem('cookieConsent', val); }catch(e){} banner.classList.remove('show'); }
+    if(accept) accept.addEventListener('click', function(){ setConsent('accepted'); });
+    if(decline) decline.addEventListener('click', function(){ setConsent('declined'); });
+  })();
+</script>
 
 </body>
 </html>
