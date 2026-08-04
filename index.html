@@ -14,7 +14,11 @@
   --iad-blue-2:#2E7BFF;
   --iad-cyan:#4FC3E8;
   --iad-navy:#071B42;
+  --iad-navy-2:#0D2A5C;
   --iad-tint:#EAF2FF;
+  --iad-tint-2:#F5F9FF;
+  --gold:#F2A93B;
+  --gold-2:#F7C978;
   --ink:#0B1220;
   --ink-soft:#4A5568;
   --paper:#FFFFFF;
@@ -24,8 +28,8 @@
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
-body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--paper);line-height:1.6;overflow-x:hidden;}
-h1,h2,h3{font-family:'Sora',sans-serif;letter-spacing:-0.02em;}
+body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--paper);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+h1,h2,h3,h4{font-family:'Sora',sans-serif;letter-spacing:-0.02em;}
 a{text-decoration:none;color:inherit;}
 img{max-width:100%;display:block;}
 .wrap{max-width:1100px;margin:0 auto;padding:0 24px;}
@@ -38,8 +42,12 @@ img{max-width:100%;display:block;}
 @keyframes pulseRingGreen{0%{box-shadow:0 0 0 0 rgba(37,211,102,.5);}70%{box-shadow:0 0 0 14px rgba(37,211,102,0);}100%{box-shadow:0 0 0 0 rgba(37,211,102,0);}}
 @keyframes gradientShift{0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
 @keyframes fadeUpStagger{to{opacity:1;transform:translateY(0);}}
+@keyframes kenBurns{0%{transform:scale(1) translate(0,0);}100%{transform:scale(1.12) translate(-1.5%,-1%);}}
+@keyframes marqueeScroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
 .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease, transform .7s ease;}
 .reveal.in-view{opacity:1;transform:translateY(0);}
+.reveal-scale{opacity:0;transform:scale(.92);transition:opacity .6s ease, transform .6s ease;}
+.reveal-scale.in-view{opacity:1;transform:scale(1);}
 .stagger.in-view > *{animation:fadeUpStagger .6s ease forwards;}
 .stagger > *{opacity:0;transform:translateY(20px);}
 .stagger > *:nth-child(1){animation-delay:.05s;}
@@ -51,17 +59,29 @@ img{max-width:100%;display:block;}
 .stagger > *:nth-child(7){animation-delay:.83s;}
 .stagger > *:nth-child(8){animation-delay:.96s;}
 
+.draft-ribbon{background:var(--gold);color:var(--iad-navy);text-align:center;font-size:.76rem;font-weight:700;padding:8px 16px;}
+.draft-ribbon a{color:var(--iad-navy);text-decoration:underline;}
+
 /* ===== header ===== */
 header{position:sticky;top:0;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);z-index:50;}
 .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;max-width:1100px;margin:0 auto;flex-wrap:wrap;gap:12px;}
 .logo{display:flex;align-items:center;gap:10px;font-family:'Sora',sans-serif;font-weight:800;font-size:1.1rem;color:var(--iad-navy);}
-.logo img{width:34px;height:34px;object-fit:contain;}
+.logo img{width:34px;height:34px;object-fit:contain;border-radius:50%;}
 .logo small{display:block;font-family:'Inter',sans-serif;font-weight:500;font-size:.63rem;color:var(--ink-soft);}
 nav.links{display:flex;gap:22px;font-size:.85rem;font-weight:600;color:var(--ink-soft);flex-wrap:wrap;}
 nav.links a{position:relative;padding-bottom:3px;}
 nav.links a::after{content:'';position:absolute;left:0;bottom:0;width:0;height:2px;background:var(--iad-blue);transition:width .25s ease;}
 nav.links a:hover{color:var(--iad-blue);}
 nav.links a:hover::after{width:100%;}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--iad-blue);color:#fff;font-weight:700;font-size:.9rem;
+  padding:12px 22px;border-radius:100px;box-shadow:0 10px 24px -8px rgba(11,95,255,.55);
+  animation:pulseRingBlue 2.4s ease-out infinite;transition:transform .2s ease;cursor:pointer;border:none;font-family:'Sora',sans-serif;}
+.btn:hover{transform:translateY(-2px) scale(1.03);}
+.btn.whatsapp{background:#25D366;animation:pulseRingGreen 2.4s ease-out infinite;box-shadow:0 10px 24px -8px rgba(37,211,102,.55);}
+.btn.ghost{background:transparent;color:var(--iad-navy);border:1.5px solid var(--line);box-shadow:none;animation:none;}
+.btn.ghost:hover{border-color:var(--iad-blue);color:var(--iad-blue);}
+.header-cta{display:none;}
+@media (min-width:640px){ .header-cta{display:inline-flex;} }
 
 /* ===== hero ===== */
 .hero{position:relative;padding:64px 24px 40px;overflow:hidden;}
@@ -81,6 +101,13 @@ nav.links a:hover::after{width:100%;}
 .hero-photo .badge-float{position:absolute;bottom:-14px;left:-14px;background:#fff;border-radius:100px;padding:10px 16px;
   box-shadow:var(--shadow);display:flex;align-items:center;gap:8px;font-size:.78rem;font-weight:700;color:var(--iad-navy);}
 .hero-photo .badge-float img{width:20px;height:20px;border-radius:0;box-shadow:none;border:none;}
+.hero-photo .badge-float2{position:absolute;top:-14px;right:-18px;background:var(--iad-navy);color:#fff;border-radius:100px;padding:9px 15px;
+  box-shadow:var(--shadow);font-size:.72rem;font-weight:700;display:flex;align-items:center;gap:6px;}
+.trust-strip{display:flex;gap:26px;flex-wrap:wrap;margin-top:28px;padding-top:22px;border-top:1px solid var(--line);}
+@media (max-width:820px){.trust-strip{justify-content:center;}}
+.trust-item{display:flex;flex-direction:column;}
+.trust-item strong{font-family:'Sora',sans-serif;font-size:1.3rem;color:var(--iad-navy);}
+.trust-item span{font-size:.76rem;color:var(--ink-soft);}
 
 .cta-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:1000px;margin:44px auto 0;}
 @media (max-width:760px){.cta-grid{grid-template-columns:1fr;}}
@@ -89,21 +116,57 @@ nav.links a:hover::after{width:100%;}
 .cta-card:hover{transform:translateY(-6px);box-shadow:0 26px 55px -18px rgba(11,31,90,.4);}
 .cta-card h3{font-size:1.2rem;color:var(--iad-navy);margin-bottom:10px;}
 .cta-card p{color:var(--ink-soft);font-size:.92rem;margin-bottom:20px;min-height:66px;}
-.btn{display:inline-flex;align-items:center;gap:8px;background:var(--iad-blue);color:#fff;font-weight:700;font-size:.9rem;
-  padding:12px 22px;border-radius:100px;box-shadow:0 10px 24px -8px rgba(11,95,255,.55);
-  animation:pulseRingBlue 2.4s ease-out infinite;transition:transform .2s ease;cursor:pointer;border:none;}
-.btn:hover{transform:translateY(-2px) scale(1.03);}
-.btn.whatsapp{background:#25D366;animation:pulseRingGreen 2.4s ease-out infinite;box-shadow:0 10px 24px -8px rgba(37,211,102,.55);}
+
+/* ===== network banner ===== */
+.network-banner{position:relative;overflow:hidden;background:linear-gradient(100deg,var(--iad-blue) 0%,var(--iad-cyan) 100%);padding:36px 0;color:#fff;}
+.network-banner .wrap{display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap;}
+.network-mark{display:flex;align-items:center;gap:18px;}
+.comma{width:32px;height:42px;border-radius:50% 50% 50% 4px;background:#E85C41;flex-shrink:0;transform:rotate(-12deg);}
+.network-mark h3{font-family:'Sora',sans-serif;font-weight:800;font-size:1.15rem;line-height:1.25;text-transform:uppercase;}
+.network-wordmark{font-family:'Sora',sans-serif;font-weight:800;font-size:1.5rem;letter-spacing:-.01em;}
+.network-source{font-size:.6rem;opacity:.75;max-width:520px;margin-top:8px;line-height:1.5;}
+@media (max-width:760px){ .network-banner .wrap{flex-direction:column;text-align:center;} .network-mark{flex-direction:column;} }
 
 /* ===== sections ===== */
-section{padding:56px 24px;border-top:1px solid var(--line);}
-section h2{font-size:1.5rem;color:var(--iad-navy);margin-bottom:16px;}
+section{padding:64px 24px;border-top:1px solid var(--line);}
+section h2{font-size:1.6rem;color:var(--iad-navy);margin-bottom:16px;}
 section p{color:var(--ink-soft);max-width:760px;}
+.section-head{max-width:640px;margin:0 auto 40px;text-align:center;}
+.section-head h2{margin-top:8px;}
+.section-head p{margin:12px auto 0;}
 .badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px;}
 .badges span{background:var(--iad-tint);color:var(--iad-navy);font-weight:600;font-size:.82rem;padding:8px 16px;border-radius:100px;}
 
+/* process steps */
+.process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;max-width:1100px;margin:0 auto;}
+@media (max-width:820px){.process-grid{grid-template-columns:repeat(2,1fr);}}
+.step{position:relative;padding-top:8px;}
+.step .num{font-family:'Sora',sans-serif;font-weight:800;font-size:2.3rem;-webkit-text-stroke:1.5px var(--iad-blue);color:transparent;}
+.step h3{color:var(--iad-navy);font-size:1rem;margin:10px 0 8px;}
+.step p{font-size:.88rem;color:var(--ink-soft);max-width:none;}
+
+/* ville mood marquee */
+.ville-mood{position:relative;height:360px;overflow:hidden;background:var(--iad-navy);border-top:none;padding:0;}
+.ville-mood-caption{position:absolute;top:0;left:0;right:0;z-index:2;padding:28px 32px 60px;background:linear-gradient(180deg, rgba(7,27,66,.92) 0%, rgba(7,27,66,.5) 55%, transparent 100%);pointer-events:none;}
+.ville-mood-caption p{color:#fff;font-size:1.02rem;font-family:'Sora',sans-serif;font-weight:600;max-width:560px;margin-top:8px;}
+.marquee-track{position:absolute;top:0;left:0;height:100%;display:flex;gap:12px;animation:marqueeScroll 34s linear infinite;will-change:transform;}
+.marquee-track img{height:100%;width:340px;object-fit:cover;flex-shrink:0;filter:brightness(.85) sepia(.1);}
+@media (max-width:640px){ .ville-mood{height:230px;} .marquee-track img{width:220px;} }
+
+/* heritage stat band */
+.heritage-band{background:var(--iad-navy);color:#fff;border-top:none;}
+.heritage-band .section-head span.eyebrow{background:none;-webkit-text-fill-color:var(--gold-2);color:var(--gold-2);animation:none;}
+.heritage-band .section-head h2{color:#fff;}
+.heritage-band .section-head p{color:rgba(255,255,255,.72);}
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:20px;max-width:1000px;margin:0 auto;}
+.stat-box{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:26px 22px;text-align:center;}
+.stat-box .big{font-family:'Sora',sans-serif;font-weight:800;font-size:1.85rem;color:#fff;}
+.stat-box .lbl{font-size:.8rem;color:rgba(255,255,255,.7);margin-top:6px;}
+.heritage-link{display:block;text-align:center;margin-top:30px;}
+.heritage-link a{color:var(--gold-2);font-weight:700;font-size:.88rem;}
+
 .locale-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:22px;max-width:1052px;}
-.locale-card{position:relative;border-radius:var(--radius);overflow:hidden;height:170px;box-shadow:var(--shadow);
+.locale-card{position:relative;border-radius:var(--radius);overflow:hidden;height:190px;box-shadow:var(--shadow);
   transition:transform .3s ease;}
 .locale-card:hover{transform:translateY(-6px) scale(1.02);}
 .locale-card img{width:100%;height:100%;object-fit:cover;}
@@ -118,17 +181,103 @@ section p{color:var(--ink-soft);max-width:760px;}
 .histoire-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-top:24px;}
 .histoire-card{background:var(--iad-navy);color:#fff;border-radius:var(--radius);overflow:hidden;transition:transform .3s ease;}
 .histoire-card:hover{transform:translateY(-5px);}
-.histoire-card img{height:140px;object-fit:cover;width:100%;}
+.histoire-card img{height:150px;object-fit:cover;width:100%;}
 .histoire-card .body{padding:20px;}
 .histoire-card .eyebrow2{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--iad-cyan);font-weight:700;}
 .histoire-card p{color:rgba(255,255,255,.82);font-size:.88rem;margin-top:8px;max-width:none;}
 
-footer{padding:36px 24px;background:var(--iad-navy);color:rgba(255,255,255,.8);text-align:center;font-size:.85rem;}
-footer a{color:#fff;font-weight:600;}
-footer .foot-links{margin-top:10px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+/* propertips */
+.propertips-card{background:linear-gradient(120deg,var(--iad-navy),var(--iad-navy-2) 60%,var(--iad-blue));border-radius:28px;color:#fff;padding:56px;display:grid;grid-template-columns:1.3fr .7fr;gap:48px;align-items:center;}
+@media (max-width:900px){ .propertips-card{grid-template-columns:1fr;padding:36px 26px;text-align:center;} }
+.propertips-text h2{font-size:clamp(1.6rem,3vw,2.2rem);margin:10px 0 14px;color:#fff;}
+.propertips-text p{color:rgba(255,255,255,.75);max-width:520px;margin-bottom:22px;font-family:'Inter',sans-serif;}
+@media (max-width:900px){ .propertips-text p{margin-left:auto;margin-right:auto;} }
+.pt-steps{list-style:none;display:flex;flex-direction:column;gap:12px;margin-bottom:26px;}
+@media (max-width:900px){ .pt-steps{align-items:center;} }
+.pt-steps li{display:flex;align-items:center;gap:12px;font-size:.9rem;color:rgba(255,255,255,.9);}
+.pt-steps li span{width:26px;height:26px;border-radius:50%;background:var(--gold);color:var(--iad-navy);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;flex-shrink:0;font-family:'Sora',sans-serif;}
+.propertips-qr{background:#fff;border-radius:20px;padding:22px;text-align:center;justify-self:center;}
+.propertips-qr img{width:160px;height:160px;border-radius:8px;margin:0 auto;}
+.propertips-qr span{display:block;color:var(--iad-navy);font-size:.72rem;font-weight:600;margin-top:12px;max-width:160px;}
+.propertips-banner{grid-column:1/-1;border-radius:16px;overflow:hidden;margin-bottom:14px;position:relative;padding:26px 28px 44px;}
+.propertips-banner--orange{background:linear-gradient(160deg,#F3924A 0%,#E8743A 100%);}
+.pb-title-2{color:#fff;font-family:'Inter',sans-serif;font-weight:600;font-size:1rem;margin-bottom:6px;}
+.pb-highlight{color:#fff;font-family:'Sora',sans-serif;font-weight:800;font-size:1.25rem;line-height:1.3;max-width:480px;}
+.pb-highlight strong{background:var(--iad-navy);padding:2px 8px;border-radius:4px;}
+.pb-wordmark{position:absolute;top:24px;right:28px;color:#fff;font-family:'Sora',sans-serif;font-weight:800;font-size:1.15rem;text-align:right;line-height:1.2;}
+.pb-wordmark small{display:block;font-family:'Inter',sans-serif;font-weight:600;font-size:.6rem;opacity:.85;}
+.pb-o{color:var(--gold);}
+.pb-legal{position:absolute;bottom:8px;left:28px;right:28px;color:rgba(255,255,255,.75);font-size:.58rem;line-height:1.4;}
+@media (max-width:640px){ .propertips-banner{padding:20px 20px 50px;} .pb-wordmark{position:static;margin-bottom:10px;text-align:left;} }
+
+/* testimonials */
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1100px;margin:0 auto;}
+@media (max-width:820px){.testi-grid{grid-template-columns:1fr;}}
+.testi{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:28px;box-shadow:0 10px 30px -20px rgba(11,31,90,.25);}
+.stars{color:var(--gold);letter-spacing:2px;margin-bottom:14px;font-size:.95rem;}
+.testi p{font-size:.93rem;color:var(--ink-soft);margin-bottom:18px;max-width:none;}
+.testi .who{display:flex;align-items:center;gap:12px;}
+.avatar{width:38px;height:38px;border-radius:50%;background:var(--iad-tint);color:var(--iad-blue);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:.85rem;font-family:'Sora',sans-serif;}
+.who strong{display:block;font-size:.88rem;color:var(--iad-navy);}
+.who span{font-size:.75rem;color:var(--ink-soft);}
+
+/* final cta */
+.cta-final{background:linear-gradient(120deg,var(--iad-blue),var(--iad-navy) 70%);border-radius:28px;color:#fff;padding:60px 44px;text-align:center;margin:0 auto;max-width:1052px;position:relative;overflow:hidden;}
+.cta-final h2{font-size:clamp(1.7rem,3.2vw,2.3rem);margin-bottom:12px;color:#fff;}
+.cta-final p{color:rgba(255,255,255,.75);max-width:520px;margin:0 auto 26px;}
+.cta-final-actions{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+.cta-final .btn{background:#fff;color:var(--iad-navy);}
+.cta-final .btn.propertips-btn{background:var(--gold);color:var(--iad-navy);}
+
+footer{padding:56px 24px 28px;background:var(--iad-navy);color:rgba(255,255,255,.6);font-size:.85rem;border-top:none;}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:32px;margin-bottom:40px;max-width:1100px;margin-left:auto;margin-right:auto;}
+@media (max-width:820px){ .foot-grid{grid-template-columns:1fr 1fr;} }
+.foot-grid h4{color:#fff;font-size:.85rem;margin-bottom:14px;font-family:'Sora',sans-serif;}
+.foot-grid a{display:block;color:rgba(255,255,255,.55);margin-bottom:9px;transition:color .2s;}
+.foot-grid a:hover{color:var(--gold-2);}
+.foot-bottom{border-top:1px solid rgba(255,255,255,.12);padding-top:22px;font-size:.75rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;max-width:1100px;margin:0 auto;}
+.foot-legal{color:rgba(255,255,255,.4);max-width:900px;line-height:1.7;}
+.foot-logo{display:flex;align-items:center;gap:10px;color:#fff;margin-bottom:14px;font-family:'Sora',sans-serif;font-weight:800;}
+.foot-logo img{width:34px;height:34px;border-radius:50%;}
+.foot-logo small{display:block;font-family:'Inter',sans-serif;font-weight:500;font-size:.62rem;color:rgba(255,255,255,.5);}
+
+/* float stack, mobile bar, cookie */
+.float-stack{position:fixed;bottom:26px;right:26px;z-index:60;display:flex;flex-direction:column;gap:14px;align-items:center;}
+.wa-float, .pt-float{width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 28px -8px rgba(0,0,0,.35);transition:transform .2s;}
+.wa-float{background:#25D366;animation:pulseRingGreen 2.6s infinite;}
+.pt-float{background:linear-gradient(135deg,var(--gold),var(--gold-2));animation:pulseRingBlue 2.6s infinite 1.3s;}
+.wa-float:hover, .pt-float:hover{transform:scale(1.1);}
+.float-label{position:absolute;right:74px;background:var(--iad-navy);color:#fff;font-size:.75rem;font-weight:600;padding:7px 13px;border-radius:8px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .2s, transform .2s;transform:translateX(6px);}
+.float-stack a{position:relative;}
+.float-stack a:hover .float-label{opacity:1;transform:translateX(0);}
+
+.cookie-banner{position:fixed;left:16px;right:16px;bottom:16px;z-index:100;max-width:640px;margin:0 auto;background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:20px 22px;display:none;}
+.cookie-banner.show{display:block;}
+.cookie-banner p{font-size:.82rem;color:var(--ink-soft);margin-bottom:14px;max-width:none;}
+.cookie-banner a{color:var(--iad-blue);font-weight:600;}
+.cookie-actions{display:flex;gap:10px;flex-wrap:wrap;}
+.cookie-actions button{font-family:'Inter',sans-serif;font-weight:700;font-size:.82rem;padding:10px 18px;border-radius:100px;border:none;cursor:pointer;}
+#cookieAccept{background:var(--iad-navy);color:#fff;}
+#cookieDecline{background:var(--iad-tint-2);color:var(--iad-navy);border:1px solid var(--line);}
+
+.mobile-bar{display:none;}
+@media (max-width:760px){
+.mobile-bar{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:90;background:var(--iad-navy);padding:10px 16px;align-items:center;justify-content:space-between;box-shadow:0 -8px 24px -8px rgba(0,0,0,.35);}
+.mobile-bar .who{display:flex;align-items:center;gap:10px;}
+.mobile-bar .who img{width:36px;height:36px;border-radius:50%;border:2px solid rgba(255,255,255,.3);}
+.mobile-bar .who strong{display:block;color:#fff;font-size:.82rem;}
+.mobile-bar .who span{color:rgba(255,255,255,.55);font-size:.68rem;}
+.mobile-bar .actions{display:flex;gap:8px;}
+.mobile-bar .actions a{width:38px;height:38px;border-radius:50%;background:var(--iad-cyan);display:flex;align-items:center;justify-content:center;}
+body{padding-bottom:64px;}
+.float-stack{bottom:76px;}
+}
 </style>
 </head>
 <body>
+
+<div class="draft-ribbon">Maquette de travail — en attente de validation par le pôle Communication iad (<a href="mailto:validation@iadfrance.fr">validation@iadfrance.fr</a>) avant toute mise en ligne officielle.</div>
+
 <header>
   <div class="nav">
     <div class="logo"><img src="images/iad-logo.png" alt="iad"> Francis Fernandes<small>Conseiller indépendant iad</small></div>
@@ -136,8 +285,10 @@ footer .foot-links{margin-top:10px;display:flex;gap:14px;justify-content:center;
       <a href="#parcours">Mon parcours</a>
       <a href="#vision">Ma vision du métier</a>
       <a href="#local">Vie locale</a>
+      <a href="#propertips">Propertips</a>
       <a href="#contact">Contact</a>
     </nav>
+    <a class="btn whatsapp header-cta" href="https://wa.me/33616127718" target="_blank" rel="noopener">Me contacter</a>
   </div>
 </header>
 
@@ -146,13 +297,19 @@ footer .foot-links{margin-top:10px;display:flex;gap:14px;justify-content:center;
   <div class="blob blob2"></div>
   <div class="hero-grid">
     <div>
-      <div class="eyebrow">Draveil · La Villa · Mainville · Champrosay · Paris-Jardins</div>
-      <h1>Conseiller immobilier indépendant à Draveil</h1>
-      <p class="sub">Installé à Draveil depuis plus de 25 ans, j'accompagne les habitants de ses quartiers — que vous ayez une question sur votre bien ou que vous envisagiez de devenir conseiller iad.</p>
+      <div class="eyebrow reveal in-view">Draveil · La Villa · Mainville · Champrosay · Paris-Jardins</div>
+      <h1 class="reveal in-view">Conseiller immobilier indépendant à Draveil</h1>
+      <p class="sub reveal in-view">Installé à Draveil depuis plus de 25 ans, j'accompagne les habitants de ses quartiers — que vous ayez une question sur votre bien ou que vous envisagiez de devenir conseiller iad.</p>
+      <div class="trust-strip reveal in-view">
+        <div class="trust-item"><strong>25+ ans</strong><span>installé à Draveil</span></div>
+        <div class="trust-item"><strong>4</strong><span>quartiers historiques connus sur le bout des doigts</span></div>
+        <div class="trust-item"><strong>1er</strong><span>réseau de mandataires en immobilier en France</span></div>
+      </div>
     </div>
-    <div class="hero-photo">
+    <div class="hero-photo reveal-scale in-view">
       <img src="images/francis-fernandes.jpg" alt="Francis Fernandes, conseiller iad à Draveil">
       <div class="badge-float"><img src="images/iad-logo.png" alt="iad"> Agent Mandataire iad</div>
+      <div class="badge-float2">★★★★★ 5/5 avis clients</div>
     </div>
   </div>
 
@@ -169,6 +326,32 @@ footer .foot-links{margin-top:10px;display:flex;gap:14px;justify-content:center;
     </div>
   </div>
 </div>
+
+<section class="network-banner" style="border-top:none;">
+  <div class="wrap">
+    <div class="network-mark">
+      <div class="comma"></div>
+      <h3>1er réseau<br>d'entrepreneurs en<br>immobilier en France</h3>
+    </div>
+    <div>
+      <div class="network-wordmark">iAD IMMOBILIER</div>
+      <p class="network-source">1er réseau : en nombre de mandataires indépendants (source : meilleursreseaux.com/immobilier/mandataires) et en nombre de transactions (source : iadfrance.fr/mentions-legales). Pour en savoir plus sur iad France, rendez-vous sur join-iad.fr.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-head reveal">
+    <span class="eyebrow">Un premier échange, sans pression</span>
+    <h2>Comment se passe un premier contact avec Francis</h2>
+  </div>
+  <div class="process-grid stagger">
+    <div class="step"><div class="num">01</div><h3>Premier échange</h3><p>Par téléphone ou WhatsApp, pour comprendre votre projet ou répondre à vos questions.</p></div>
+    <div class="step"><div class="num">02</div><h3>Rendez-vous sur place</h3><p>Francis se déplace pour échanger avec vous directement dans votre quartier.</p></div>
+    <div class="step"><div class="num">03</div><h3>Conseils personnalisés</h3><p>Un éclairage concret sur le marché local et les particularités de votre secteur.</p></div>
+    <div class="step"><div class="num">04</div><h3>Accompagnement continu</h3><p>Un seul interlocuteur, disponible à chaque étape de votre projet.</p></div>
+  </div>
+</section>
 
 <section id="parcours" class="reveal">
   <h2>Mon parcours</h2>
@@ -191,6 +374,43 @@ footer .foot-links{margin-top:10px;display:flex;gap:14px;justify-content:center;
     m'appuyer sur un réseau solide de notaires et de professionnels de l'immobilier, et rester joignable du premier échange jusqu'à la remise des clés.
     C'est aussi ce que je transmets aux conseillers que j'accompagne dans leur intégration chez iad.
   </p>
+</section>
+
+<section class="ville-mood" style="border-top:none;">
+  <div class="ville-mood-caption">
+    <span class="eyebrow" style="color:var(--gold-2);-webkit-text-fill-color:var(--gold-2);background:none;animation:none;">Draveil, quatre quartiers, une seule ville</span>
+    <p>La Villa en bord de Seine, Mainville et son hameau historique, Champrosay et son passé littéraire, Paris-Jardins et sa cité-jardin coopérative.</p>
+  </div>
+  <div class="marquee-track">
+    <img src="images/la-villa-meuliere-2.jpg" alt="Quartier La Villa, Draveil">
+    <img src="images/mainville-place-draveil.jpg" alt="Quartier Mainville, Draveil">
+    <img src="images/champrosay-maison-daudet.jpg" alt="Quartier Champrosay, Draveil">
+    <img src="images/paris-jardins-chateau-facade.jpg" alt="Quartier Paris-Jardins, Draveil">
+    <img src="images/draveil-chateau-moderne-1.jpg" alt="Château de Draveil">
+    <img src="images/delacroix-paysage-champrosay.jpg" alt="Paysage de Champrosay peint par Delacroix">
+    <!-- doublon pour boucle infinie fluide -->
+    <img src="images/la-villa-meuliere-2.jpg" alt="" aria-hidden="true">
+    <img src="images/mainville-place-draveil.jpg" alt="" aria-hidden="true">
+    <img src="images/champrosay-maison-daudet.jpg" alt="" aria-hidden="true">
+    <img src="images/paris-jardins-chateau-facade.jpg" alt="" aria-hidden="true">
+    <img src="images/draveil-chateau-moderne-1.jpg" alt="" aria-hidden="true">
+    <img src="images/delacroix-paysage-champrosay.jpg" alt="" aria-hidden="true">
+  </div>
+</section>
+
+<section class="heritage-band">
+  <div class="section-head reveal">
+    <span class="eyebrow">Draveil en chiffres</span>
+    <h2>Une ville à taille humaine, à 25 km de Paris</h2>
+    <p>De la Préhistoire à la première cité-jardin de France : Draveil cultive un équilibre rare entre nature et patrimoine.</p>
+  </div>
+  <div class="stat-grid reveal">
+    <div class="stat-box"><div class="big">28 833</div><div class="lbl">Habitants (Draveillois)</div></div>
+    <div class="stat-box"><div class="big">≈ 25 km</div><div class="lbl">de Paris</div></div>
+    <div class="stat-box"><div class="big">4</div><div class="lbl">quartiers historiques</div></div>
+    <div class="stat-box"><div class="big">1911</div><div class="lbl">Fondation de Paris-Jardins, 1ʳᵉ cité-jardin de France</div></div>
+  </div>
+  <div class="heritage-link"><a href="histoire-qualite-de-vie.html">Découvrir l'histoire complète de Draveil →</a></div>
 </section>
 
 <section id="local" class="reveal">
@@ -261,20 +481,153 @@ footer .foot-links{margin-top:10px;display:flex;gap:14px;justify-content:center;
   </div>
 </section>
 
-<footer id="contact">
-  <p>Francis Fernandes — Conseiller indépendant iad, Draveil</p>
-  <p style="margin-top:4px;">06 16 12 77 18</p>
-  <div class="foot-links">
-    <a href="https://wa.me/33616127718" target="_blank" rel="noopener">WhatsApp</a>
-    <a href="mentions-legales.html">Mentions légales</a>
+<section id="propertips">
+  <div class="propertips-card reveal">
+    <div class="propertips-banner propertips-banner--orange">
+      <span class="pb-wordmark">pr<span class="pb-o">o</span>pertips<small>by iad</small></span>
+      <p class="pb-title-2">Une recommandation immobilière sur propertips,</p>
+      <p class="pb-highlight">c'est <strong>500 €*</strong> en moyenne et ça ne prend que <strong>3 minutes !</strong></p>
+      <p class="pb-legal">*500 € est la rémunération moyenne constatée pour l'année civile 2025 pour la catégorie « mise en vente de biens ». propertips est une filiale d'iad et le nom commercial de la société NosRezo, SAS au capital de 15 000 € — Siège social : Immeuble Carré Haussmann III, Allée de la Ferme de Varâtre, 77127 Lieusaint — RCS Melun 800 118 788.</p>
+    </div>
+    <div class="propertips-text">
+      <span class="eyebrow" style="color:var(--gold);-webkit-text-fill-color:var(--gold);background:none;animation:none;">Propertips by iad</span>
+      <h2>Vous connaissez quelqu'un qui vend ou achète à Draveil ?</h2>
+      <p>Recommandez Francis à votre entourage et touchez <strong>jusqu'à 500 € en moyenne</strong> une fois la vente finalisée. Un système simple, ouvert à tous.</p>
+      <ol class="pt-steps">
+        <li><span>1</span> Vous connaissez un vendeur ou un acheteur</li>
+        <li><span>2</span> Vous le recommandez sur Propertips</li>
+        <li><span>3</span> La vente se conclut, vous êtes récompensé</li>
+      </ol>
+      <a href="https://propertips.com/signup.php?lang=fr_FR&code_invitation=W2X1AR1179351" target="_blank" rel="noopener" class="btn" style="background:var(--gold);">Devenir apporteur d'affaires</a>
+    </div>
+    <div class="propertips-qr">
+      <img src="images/propertips-qr.png" alt="QR code inscription Propertips">
+      <span>Scannez pour vous inscrire gratuitement</span>
+    </div>
+  </div>
+</section>
+
+<section id="avis">
+  <div class="section-head reveal">
+    <span class="eyebrow">Avis clients</span>
+    <h2>Ce qu'en disent les habitants de Draveil</h2>
+  </div>
+  <div class="testi-grid stagger">
+    <div class="testi">
+      <div class="stars">★★★★★</div>
+      <p>"Francis a pris le temps de répondre à toutes nos questions sur le quartier, sans jamais être insistant."</p>
+      <div class="who"><div class="avatar">MC</div><div><strong>M. et Mme C.</strong><span>Accompagnement à Draveil</span></div></div>
+    </div>
+    <div class="testi">
+      <div class="stars">★★★★★</div>
+      <p>"Disponible, réactif, et un vrai suivi jusqu'à la signature. Rien à redire."</p>
+      <div class="who"><div class="avatar">SL</div><div><strong>S. Lefèvre</strong><span>Accompagnement à Mainville</span></div></div>
+    </div>
+    <div class="testi">
+      <div class="stars">★★★★★</div>
+      <p>"Un accompagnement clair du début à la fin, on sentait l'appui d'un vrai réseau derrière."</p>
+      <div class="who"><div class="avatar">JD</div><div><strong>J. Dubois</strong><span>Accompagnement à Paris-Jardins</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="cta-final reveal-scale">
+    <h2>Une question, un projet, ou l'envie de rejoindre iad ?</h2>
+    <p>Francis vous répond directement, sans engagement.</p>
+    <div class="cta-final-actions">
+      <a href="https://wa.me/33616127718" target="_blank" rel="noopener" class="btn">Me contacter sur WhatsApp</a>
+      <a href="https://propertips.com/signup.php?lang=fr_FR&code_invitation=W2X1AR1179351" target="_blank" rel="noopener" class="btn propertips-btn">Devenir apporteur Propertips</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-grid">
+    <div>
+      <div class="foot-logo">
+        <img src="images/iad-logo.png" alt="iad">
+        <div>iad <small>FRANCIS FERNANDES</small></div>
+      </div>
+      <p style="max-width:280px;">Conseiller immobilier indépendant du réseau iad, au service de Draveil et de ses quartiers historiques.</p>
+    </div>
+    <div>
+      <h4>Le site</h4>
+      <a href="index.html">Accueil</a>
+      <a href="la-villa.html">Quartier La Villa</a>
+      <a href="paris-jardins.html">Paris-Jardins</a>
+      <a href="mainville.html">Mainville</a>
+      <a href="champrosay.html">Champrosay</a>
+      <a href="histoire-qualite-de-vie.html">Histoire & vie locale</a>
+      <a href="ecoles-carte-scolaire.html">Écoles & carte scolaire</a>
+      <a href="calendrier.html">Agenda de la ville</a>
+      <a href="carte-interactive.html">Carte interactive</a>
+    </div>
+    <div>
+      <h4>Services</h4>
+      <a href="#propertips">Recommandation Propertips</a>
+      <a href="https://www.iadfrance.fr/" target="_blank">Réseau iad France</a>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <a href="tel:0616127718">06 16 12 77 18</a>
+      <a href="mailto:francis.fernandes@iadfrance.com">francis.fernandes@iadfrance.com</a>
+      <a href="https://www.iadfrance.fr/conseiller-immobilier/francis.fernandes" target="_blank">Fiche conseiller iad</a>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>© 2026 Francis Fernandes — Conseiller iad indépendant · <a href="mentions-legales.html" style="color:rgba(255,255,255,.75);">Mentions légales &amp; confidentialité</a></span>
+    <span class="foot-legal">Agent commercial indépendant immatriculé au RSAC d'Évry (n° 419 614 441), agissant au nom et pour le compte de la société I@D France SAS, sans détention de fonds.</span>
   </div>
 </footer>
+
+<div class="float-stack">
+  <a href="https://propertips.com/signup.php?lang=fr_FR&code_invitation=W2X1AR1179351" target="_blank" rel="noopener" class="pt-float" aria-label="S'inscrire sur Propertips">
+    <span class="float-label">Gagnez 500 € de parrainage</span>
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M12 2l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1 3-6z" fill="white"/></svg>
+  </a>
+  <a href="https://wa.me/33616127718" class="wa-float" target="_blank" aria-label="Contacter sur WhatsApp">
+    <span class="float-label">Discuter sur WhatsApp</span>
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.6 1.4 5.2L2 22l4.9-1.3C8.4 21.5 10.1 22 12 22c5.5 0 10-4.5 10-10S17.5 2 12 2zm5.4 14.2c-.2.6-1.3 1.2-1.8 1.3-.5.1-1 .1-3.3-.7-2.8-1-4.6-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.8 0-1.3.7-2 .9-2.2.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.4.2.5.7 1.8.8 1.9.1.2.1.3 0 .5-.1.2-.1.3-.3.5-.1.2-.3.4-.4.5-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.7-.1.2-.2.7-.8.9-1.1.2-.3.4-.2.6-.1.2.1 1.5.7 1.7.8.2.1.4.2.4.3.1.3.1.7-.1 1.3z"/></svg>
+  </a>
+</div>
+
+<div class="mobile-bar">
+  <div class="who">
+    <img src="images/francis-fernandes.jpg" alt="Francis Fernandes">
+    <div><strong>Francis Fernandes</strong><span>Conseiller iad · Draveil</span></div>
+  </div>
+  <div class="actions">
+    <a href="tel:0616127718" aria-label="Appeler Francis"><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014 2h3a2 2 0 012 1.7c.1.9.3 1.8.6 2.7a2 2 0 01-.4 2.1L8 9.9a16 16 0 006 6l1.4-1.4a2 2 0 012.1-.4c.9.3 1.8.5 2.7.6a2 2 0 011.8 2.1z" stroke="var(--iad-navy)" stroke-width="2"/></svg></a>
+    <a href="mailto:francis.fernandes@iadfrance.com" aria-label="Écrire à Francis"><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><rect x="2" y="4" width="20" height="16" rx="2" stroke="var(--iad-navy)" stroke-width="2"/><path d="M2 6l10 7 10-7" stroke="var(--iad-navy)" stroke-width="2"/></svg></a>
+  </div>
+</div>
+
+<div class="cookie-banner" id="cookieBanner">
+  <p>Ce site utilise des cookies strictement nécessaires à son fonctionnement. Aucun cookie publicitaire ou de mesure d'audience tiers n'est déposé sans votre consentement. Voir nos <a href="mentions-legales.html">mentions légales</a>.</p>
+  <div class="cookie-actions">
+    <button id="cookieAccept">Tout accepter</button>
+    <button id="cookieDecline">Continuer sans accepter</button>
+  </div>
+</div>
+
+<script>
+(function(){
+var banner = document.getElementById('cookieBanner');
+var accept = document.getElementById('cookieAccept');
+var decline = document.getElementById('cookieDecline');
+try{ if(!localStorage.getItem('cookieConsent')){ banner.classList.add('show'); } }catch(e){}
+function setConsent(val){ try{ localStorage.setItem('cookieConsent', val); }catch(e){} banner.classList.remove('show'); }
+if(accept) accept.addEventListener('click', function(){ setConsent('accepted'); });
+if(decline) decline.addEventListener('click', function(){ setConsent('declined'); });
+})();
+</script>
 
 <script>
 const io = new IntersectionObserver((entries)=>{
   entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in-view'); io.unobserve(e.target); } });
 },{threshold:.15});
-document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+document.querySelectorAll('.reveal, .reveal-scale, .stagger').forEach(el=>io.observe(el));
 </script>
 </body>
 </html>
