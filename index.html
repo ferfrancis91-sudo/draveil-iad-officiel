@@ -137,11 +137,28 @@ section p{color:var(--ink-soft);max-width:760px;}
 .badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px;}
 .badges span{background:var(--iad-tint);color:var(--iad-navy);font-weight:600;font-size:.82rem;padding:8px 16px;border-radius:100px;}
 
+/* process section background */
+.process-section{position:relative;overflow:hidden;background:linear-gradient(165deg,var(--iad-tint-2) 0%,#eef4ff 45%,var(--iad-tint-2) 100%);}
+.process-section::before,.process-section::after{content:"";position:absolute;border-radius:50%;filter:blur(70px);opacity:.4;z-index:0;}
+.process-section::before{width:320px;height:320px;background:var(--iad-blue-2);top:-120px;right:-80px;}
+.process-section::after{width:260px;height:260px;background:var(--iad-cyan);bottom:-100px;left:-60px;}
+.process-section .section-head,.process-section .process-grid{position:relative;z-index:1;}
+
 /* process steps */
 .process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;max-width:1100px;margin:0 auto;}
 @media (max-width:820px){.process-grid{grid-template-columns:repeat(2,1fr);}}
-.step{position:relative;padding-top:8px;}
-.step .num{font-family:'Sora',sans-serif;font-weight:800;font-size:2.3rem;-webkit-text-stroke:1.5px var(--iad-blue);color:transparent;}
+.step{position:relative;padding:22px 20px 24px;background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 14px 32px -22px rgba(11,31,90,.3);transition:transform .3s ease, box-shadow .3s ease;}
+.step:hover{transform:translateY(-4px);box-shadow:0 20px 40px -18px rgba(11,31,90,.4);}
+@keyframes numCountdown{
+  0%,100%{-webkit-text-stroke-width:1.5px;color:transparent;text-shadow:none;transform:scale(1);}
+  15%{-webkit-text-stroke-width:0;color:var(--iad-blue);text-shadow:0 0 20px rgba(11,95,255,.65);transform:scale(1.08);}
+  30%{-webkit-text-stroke-width:1.5px;color:transparent;text-shadow:none;transform:scale(1);}
+}
+.step .num{font-family:'Sora',sans-serif;font-weight:800;font-size:2.3rem;-webkit-text-stroke:1.5px var(--iad-blue);color:transparent;display:inline-block;animation:numCountdown 4.8s ease-in-out infinite;}
+.process-grid .step:nth-child(1) .num{animation-delay:0s;}
+.process-grid .step:nth-child(2) .num{animation-delay:.5s;}
+.process-grid .step:nth-child(3) .num{animation-delay:1s;}
+.process-grid .step:nth-child(4) .num{animation-delay:1.5s;}
 .step h3{color:var(--iad-navy);font-size:1rem;margin:10px 0 8px;}
 .step p{font-size:.88rem;color:var(--ink-soft);max-width:none;}
 
@@ -196,7 +213,11 @@ section p{color:var(--ink-soft);max-width:760px;}
 .locale-card{position:relative;border-radius:var(--radius);overflow:hidden;height:190px;box-shadow:var(--shadow);
   transition:transform .3s ease;}
 .locale-card:hover{transform:translateY(-6px) scale(1.02);}
-.locale-card img{width:100%;height:100%;object-fit:cover;}
+.locale-card img{width:100%;height:100%;object-fit:cover;object-position:center 50%;}
+.locale-card.pos-villa img{object-position:center 22%;}
+.locale-card.pos-mainville img{object-position:center 42%;}
+.locale-card.pos-champrosay img{object-position:center 28%;}
+.locale-card.pos-paris-jardins img{object-position:center 40%;}
 .locale-card .overlay{position:absolute;inset:0;background:linear-gradient(to top, rgba(7,27,66,.85), rgba(7,27,66,0) 60%);
   display:flex;align-items:flex-end;padding:14px;}
 .locale-card .overlay span{color:#fff;font-weight:700;font-size:.92rem;}
@@ -367,7 +388,7 @@ body{padding-bottom:64px;}
   </div>
 </section>
 
-<section>
+<section class="process-section">
   <div class="section-head reveal">
     <span class="eyebrow">Un premier échange, sans pression</span>
     <h2>Comment se passe un premier contact avec Francis</h2>
@@ -466,19 +487,19 @@ body{padding-bottom:64px;}
   <p>Quartiers, écoles, agenda et histoire locale — un contenu informatif pour mieux connaître Draveil.</p>
 
   <div class="locale-grid stagger reveal">
-    <a class="locale-card" href="la-villa.html">
+    <a class="locale-card pos-villa" href="la-villa.html">
       <img src="images/la-villa-meuliere-2.jpg" alt="La Villa, Draveil">
       <div class="overlay"><span>La Villa</span></div>
     </a>
-    <a class="locale-card" href="mainville.html">
+    <a class="locale-card pos-mainville" href="mainville.html">
       <img src="images/mainville-place-draveil.jpg" alt="Mainville, Draveil">
       <div class="overlay"><span>Mainville</span></div>
     </a>
-    <a class="locale-card" href="champrosay.html">
+    <a class="locale-card pos-champrosay" href="champrosay.html">
       <img src="images/champrosay-maison-daudet.jpg" alt="Champrosay, Draveil">
       <div class="overlay"><span>Champrosay</span></div>
     </a>
-    <a class="locale-card" href="paris-jardins.html">
+    <a class="locale-card pos-paris-jardins" href="paris-jardins.html">
       <img src="images/paris-jardins-chateau-facade.jpg" alt="Paris-Jardins, Draveil">
       <div class="overlay"><span>Paris-Jardins</span></div>
     </a>
