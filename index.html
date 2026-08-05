@@ -163,12 +163,16 @@ section p{color:var(--ink-soft);max-width:760px;}
 .step p{font-size:.88rem;color:var(--ink-soft);max-width:none;}
 
 /* parcours background */
-.parcours-section{position:relative;overflow:hidden;background:linear-gradient(155deg,#fff 0%,var(--iad-tint-2) 50%,#fff 100%);}
-.parcours-section::before,.parcours-section::after{content:"";position:absolute;border-radius:50%;filter:blur(90px);z-index:0;}
-.parcours-section::before{width:380px;height:380px;background:var(--gold-2);opacity:.22;top:-160px;right:-120px;}
-.parcours-section::after{width:320px;height:320px;background:var(--iad-blue-2);opacity:.18;bottom:-140px;left:-90px;}
+.parcours-section{position:relative;overflow:hidden;background:var(--iad-navy);}
+.parcours-section::before{content:"";position:absolute;inset:0;background-image:url('images/draveil-chateau-moderne-1.jpg');background-size:cover;background-position:center;filter:blur(5px) brightness(.5) saturate(1.1);transform:scale(1.08);z-index:0;}
+.parcours-section::after{content:"";position:absolute;inset:0;background:linear-gradient(165deg, rgba(7,27,66,.82) 0%, rgba(7,27,66,.62) 55%, rgba(7,27,66,.82) 100%);z-index:0;}
 .parcours-section .section-head,.parcours-section .timeline,.parcours-section .badges,.parcours-section .team-mini{position:relative;z-index:1;}
-.parcours-section .timeline{background:rgba(255,255,255,.55);border-radius:20px;padding:28px 28px 28px 48px;margin-left:auto;margin-right:auto;box-shadow:0 20px 50px -30px rgba(11,31,90,.25);}
+.parcours-section .section-head .eyebrow{color:var(--gold-2);-webkit-text-fill-color:var(--gold-2);background:none;animation:none;}
+.parcours-section .section-head h2{color:#fff;}
+.parcours-section .timeline{background:rgba(255,255,255,.96);border-radius:20px;padding:28px 28px 28px 48px;margin-left:auto;margin-right:auto;box-shadow:0 24px 60px -24px rgba(0,0,0,.5);}
+.parcours-section .badges span{background:rgba(255,255,255,.14);color:#fff;}
+.parcours-section .team-intro{color:rgba(255,255,255,.75);}
+.parcours-section .team-chip{background:rgba(255,255,255,.96);}
 @media (max-width:600px){ .parcours-section .timeline{padding:22px 16px 22px 40px;} }
 
 /* parcours timeline */
