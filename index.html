@@ -162,6 +162,15 @@ section p{color:var(--ink-soft);max-width:760px;}
 .step h3{color:var(--iad-navy);font-size:1rem;margin:10px 0 8px;}
 .step p{font-size:.88rem;color:var(--ink-soft);max-width:none;}
 
+/* parcours background */
+.parcours-section{position:relative;overflow:hidden;background:linear-gradient(155deg,#fff 0%,var(--iad-tint-2) 50%,#fff 100%);}
+.parcours-section::before,.parcours-section::after{content:"";position:absolute;border-radius:50%;filter:blur(90px);z-index:0;}
+.parcours-section::before{width:380px;height:380px;background:var(--gold-2);opacity:.22;top:-160px;right:-120px;}
+.parcours-section::after{width:320px;height:320px;background:var(--iad-blue-2);opacity:.18;bottom:-140px;left:-90px;}
+.parcours-section .section-head,.parcours-section .timeline,.parcours-section .badges,.parcours-section .team-mini{position:relative;z-index:1;}
+.parcours-section .timeline{background:rgba(255,255,255,.55);border-radius:20px;padding:28px 28px 28px 48px;margin-left:auto;margin-right:auto;box-shadow:0 20px 50px -30px rgba(11,31,90,.25);}
+@media (max-width:600px){ .parcours-section .timeline{padding:22px 16px 22px 40px;} }
+
 /* parcours timeline */
 .timeline{max-width:720px;margin:36px auto 0;position:relative;padding-left:32px;border-left:3px solid var(--iad-tint);}
 .timeline-item{position:relative;padding-bottom:34px;}
@@ -209,8 +218,8 @@ section p{color:var(--ink-soft);max-width:760px;}
 .heritage-link{display:block;text-align:center;margin-top:30px;}
 .heritage-link a{color:var(--gold-2);font-weight:700;font-size:.88rem;}
 
-.locale-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin:22px auto 0;max-width:1052px;}
-.locale-card{position:relative;border-radius:var(--radius);overflow:hidden;height:190px;box-shadow:var(--shadow);
+.locale-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:18px;margin:22px auto 0;max-width:1052px;}
+.locale-card{position:relative;flex:1 1 220px;max-width:280px;border-radius:var(--radius);overflow:hidden;height:190px;box-shadow:var(--shadow);
   transition:transform .3s ease;}
 .locale-card:hover{transform:translateY(-6px) scale(1.02);}
 .locale-card img{width:100%;height:100%;object-fit:cover;object-position:center 50%;}
@@ -226,8 +235,10 @@ section p{color:var(--ink-soft);max-width:760px;}
   transition:transform .25s ease, background .25s ease;display:block;}
 .locale-more a:hover{transform:translateY(-3px);background:#dcebff;}
 
-.histoire-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin:24px auto 0;max-width:1052px;}
-.histoire-card{display:block;background:var(--iad-navy);color:#fff;border-radius:var(--radius);overflow:hidden;transition:transform .3s ease, box-shadow .3s ease;cursor:pointer;box-shadow:0 10px 26px -18px rgba(11,31,90,.5);}
+.histoire-head{margin:52px auto 0;padding-top:36px;border-top:1px dashed var(--line);text-align:center;max-width:640px;}
+.histoire-head h3{font-size:1.25rem;color:var(--iad-navy);margin-top:8px;}
+.histoire-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:18px;margin:26px auto 0;max-width:1052px;}
+.histoire-card{display:block;flex:1 1 240px;max-width:320px;background:var(--iad-navy);color:#fff;border-radius:var(--radius);overflow:hidden;transition:transform .3s ease, box-shadow .3s ease;cursor:pointer;box-shadow:0 10px 26px -18px rgba(11,31,90,.5);}
 .histoire-card:hover{transform:translateY(-5px);box-shadow:0 18px 36px -16px rgba(11,31,90,.6);}
 .histoire-card img{height:150px;object-fit:cover;width:100%;}
 .histoire-card .body{padding:20px;}
@@ -402,7 +413,7 @@ body{padding-bottom:64px;}
   </div>
 </section>
 
-<section id="parcours" class="reveal">
+<section id="parcours" class="reveal parcours-section">
   <div class="section-head reveal">
     <span class="eyebrow">Mon parcours</span>
     <h2>D'une agence classique à conseiller iad indépendant</h2>
@@ -513,6 +524,10 @@ body{padding-bottom:64px;}
     <a href="histoire-qualite-de-vie.html">Histoire & qualité de vie</a>
   </div>
 
+  <div class="histoire-head reveal">
+    <span class="eyebrow" style="color:#1877F2;-webkit-text-fill-color:#1877F2;background:none;animation:none;">Sur Facebook</span>
+    <h3>Anecdotes & actus locales</h3>
+  </div>
   <div class="histoire-grid stagger reveal">
     <a class="histoire-card" href="https://www.facebook.com/people/Francis-Fernandes/61586347769904/" target="_blank" rel="noopener">
       <div class="body">
