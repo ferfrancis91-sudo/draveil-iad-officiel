@@ -167,7 +167,8 @@ section p{color:var(--ink-soft);max-width:760px;}
 .team-grid{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;max-width:680px;margin:0 auto;}
 .team-chip{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);border-radius:100px;padding:8px 18px 8px 8px;box-shadow:0 8px 20px -14px rgba(11,31,90,.4);transition:transform .2s ease;}
 .team-chip:hover{transform:translateY(-2px);}
-.team-avatar{width:36px;height:36px;border-radius:50%;background:var(--iad-tint);color:var(--iad-blue);font-weight:700;font-size:.8rem;display:flex;align-items:center;justify-content:center;font-family:'Sora',sans-serif;flex-shrink:0;}
+.team-avatar{width:36px;height:36px;border-radius:50%;background:var(--iad-tint);color:var(--iad-blue);font-weight:700;font-size:.8rem;display:flex;align-items:center;justify-content:center;font-family:'Sora',sans-serif;flex-shrink:0;overflow:hidden;}
+.team-avatar img{width:100%;height:100%;object-fit:cover;border-radius:50%;}
 .team-chip strong{display:block;font-size:.85rem;color:var(--iad-navy);font-family:'Sora',sans-serif;}
 .team-chip span{font-size:.72rem;color:var(--ink-soft);}
 
@@ -407,9 +408,9 @@ body{padding-bottom:64px;}
   <div class="team-mini reveal">
     <p class="team-intro">Un accompagnement en équipe, aux côtés de mes collègues conseillers iad sur tout l'Essonne</p>
     <div class="team-grid">
-      <div class="team-chip"><div class="team-avatar">BB</div><div><strong>Béa Bailly</strong><span>Conseillère iad</span></div></div>
-      <div class="team-chip"><div class="team-avatar">TM</div><div><strong>Thierry Mariette</strong><span>Conseiller iad</span></div></div>
-      <div class="team-chip"><div class="team-avatar">JC</div><div><strong>Johanna Camacho</strong><span>Conseillère iad</span></div></div>
+      <div class="team-chip"><div class="team-avatar"><img src="images/avatar_beatrice.jpg" alt="Béa Bailly"></div><div><strong>Béa Bailly</strong><span>Conseillère iad</span></div></div>
+      <div class="team-chip"><div class="team-avatar"><img src="images/avatar_thierry.jpg" alt="Thierry Mariette"></div><div><strong>Thierry Mariette</strong><span>Conseiller iad</span></div></div>
+      <div class="team-chip"><div class="team-avatar"><img src="images/avatar_johanna.jpg" alt="Johanna Camacho"></div><div><strong>Johanna Camacho</strong><span>Conseillère iad</span></div></div>
     </div>
   </div>
 </section>
