@@ -209,7 +209,7 @@ section p{color:var(--ink-soft);max-width:760px;}
 .heritage-link{display:block;text-align:center;margin-top:30px;}
 .heritage-link a{color:var(--gold-2);font-weight:700;font-size:.88rem;}
 
-.locale-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:22px;max-width:1052px;}
+.locale-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin:22px auto 0;max-width:1052px;}
 .locale-card{position:relative;border-radius:var(--radius);overflow:hidden;height:190px;box-shadow:var(--shadow);
   transition:transform .3s ease;}
 .locale-card:hover{transform:translateY(-6px) scale(1.02);}
@@ -221,17 +221,18 @@ section p{color:var(--ink-soft);max-width:760px;}
 .locale-card .overlay{position:absolute;inset:0;background:linear-gradient(to top, rgba(7,27,66,.85), rgba(7,27,66,0) 60%);
   display:flex;align-items:flex-end;padding:14px;}
 .locale-card .overlay span{color:#fff;font-weight:700;font-size:.92rem;}
-.locale-more{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-top:14px;max-width:1052px;}
+.locale-more{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin:14px auto 0;max-width:1052px;}
 .locale-more a{background:var(--iad-tint);border-radius:12px;padding:14px;font-weight:600;font-size:.82rem;color:var(--iad-navy);text-align:center;
   transition:transform .25s ease, background .25s ease;display:block;}
 .locale-more a:hover{transform:translateY(-3px);background:#dcebff;}
 
-.histoire-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-top:24px;}
-.histoire-card{background:var(--iad-navy);color:#fff;border-radius:var(--radius);overflow:hidden;transition:transform .3s ease;}
-.histoire-card:hover{transform:translateY(-5px);}
+.histoire-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin:24px auto 0;max-width:1052px;}
+.histoire-card{display:block;background:var(--iad-navy);color:#fff;border-radius:var(--radius);overflow:hidden;transition:transform .3s ease, box-shadow .3s ease;cursor:pointer;box-shadow:0 10px 26px -18px rgba(11,31,90,.5);}
+.histoire-card:hover{transform:translateY(-5px);box-shadow:0 18px 36px -16px rgba(11,31,90,.6);}
 .histoire-card img{height:150px;object-fit:cover;width:100%;}
 .histoire-card .body{padding:20px;}
-.histoire-card .eyebrow2{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--iad-cyan);font-weight:700;}
+.histoire-card .eyebrow2{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--iad-cyan);font-weight:700;display:flex;align-items:center;justify-content:space-between;gap:8px;}
+.histoire-card .fb-tag{display:inline-flex;align-items:center;gap:4px;color:#fff;background:#1877F2;padding:3px 9px;border-radius:100px;font-size:.62rem;letter-spacing:0;text-transform:none;font-weight:700;}
 .histoire-card p{color:rgba(255,255,255,.82);font-size:.88rem;margin-top:8px;max-width:none;}
 
 /* propertips */
@@ -513,40 +514,40 @@ body{padding-bottom:64px;}
   </div>
 
   <div class="histoire-grid stagger reveal">
-    <div class="histoire-card">
+    <a class="histoire-card" href="https://www.facebook.com/people/Francis-Fernandes/61586347769904/" target="_blank" rel="noopener">
       <div class="body">
-        <div class="eyebrow2">Le saviez-vous ?</div>
+        <div class="eyebrow2">Le saviez-vous ? <span class="fb-tag">Voir sur Facebook</span></div>
         <p>Le sable extrait du Port-aux-Cerises a servi à construire le Paris d'Haussmann et son métro… avant de devenir un lac de loisirs.</p>
       </div>
-    </div>
-    <div class="histoire-card">
+    </a>
+    <a class="histoire-card" href="https://www.facebook.com/people/Francis-Fernandes/61586347769904/" target="_blank" rel="noopener">
       <img src="images/draveil-chateau-moderne-1.jpg" alt="Château de Draveil">
       <div class="body">
-        <div class="eyebrow2">Le saviez-vous ?</div>
+        <div class="eyebrow2">Le saviez-vous ? <span class="fb-tag">Voir sur Facebook</span></div>
         <p>La bibliothèque de Draveil occupe un château dont l'histoire commence au XIIe siècle, avec les moines de l'abbaye Saint-Victor.</p>
       </div>
-    </div>
-    <div class="histoire-card">
+    </a>
+    <a class="histoire-card" href="https://www.facebook.com/people/Francis-Fernandes/61586347769904/" target="_blank" rel="noopener">
       <img src="images/champrosay-demeure-xixe.jpg" alt="Demeure du XIXe siècle, Champrosay">
       <div class="body">
-        <div class="eyebrow2">Champrosay</div>
+        <div class="eyebrow2">Champrosay <span class="fb-tag">Voir sur Facebook</span></div>
         <p>Pierre-Antoine Lebrun, directeur de l'Imprimerie royale et membre de l'Académie française, a vécu sur ce même domaine bien avant le pavillon de chasse.</p>
       </div>
-    </div>
-    <div class="histoire-card">
+    </a>
+    <a class="histoire-card" href="https://www.facebook.com/people/Francis-Fernandes/61586347769904/" target="_blank" rel="noopener">
       <img src="images/champrosay-maison-daudet.jpg" alt="Maison d'Alphonse Daudet, Champrosay">
       <div class="body">
-        <div class="eyebrow2">Champrosay</div>
+        <div class="eyebrow2">Champrosay <span class="fb-tag">Voir sur Facebook</span></div>
         <p>Avant même d'avoir sa propre maison à Champrosay, Alphonse Daudet y passait tous ses étés, chez ses beaux-parents.</p>
       </div>
-    </div>
-    <div class="histoire-card">
+    </a>
+    <a class="histoire-card" href="https://www.facebook.com/people/Francis-Fernandes/61586347769904/" target="_blank" rel="noopener">
       <img src="images/delacroix-paysage-champrosay.jpg" alt="Paysage peint par Delacroix à Champrosay">
       <div class="body">
-        <div class="eyebrow2">Champrosay</div>
+        <div class="eyebrow2">Champrosay <span class="fb-tag">Voir sur Facebook</span></div>
         <p>Né en 1798, Eugène Delacroix, chef de file du romantisme français (La Liberté guidant le peuple, La Mort de Sardanapale), a peint les paysages de Champrosay.</p>
       </div>
-    </div>
+    </a>
   </div>
 </section>
 
