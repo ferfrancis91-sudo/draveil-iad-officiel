@@ -111,13 +111,20 @@ nav.links a:hover::after{width:100%;}
 
 .cta-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:1000px;margin:44px auto 0;}
 @media (max-width:760px){.cta-grid{grid-template-columns:1fr;}}
-.cta-card{position:relative;background:var(--iad-tint);border:1px solid var(--line);border-radius:var(--radius);padding:32px;text-align:left;box-shadow:var(--shadow);
+.cta-card{position:relative;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:32px;text-align:left;box-shadow:var(--shadow);overflow:hidden;
   transition:transform .3s ease, box-shadow .3s ease;}
 .cta-card:hover{transform:translateY(-6px);box-shadow:0 26px 55px -18px rgba(11,31,90,.4);}
 .cta-card h3{font-size:1.2rem;color:var(--iad-navy);margin-bottom:10px;}
 .cta-card p{color:var(--ink-soft);font-size:.92rem;margin-bottom:20px;min-height:66px;}
-.cta-card .fast-badge{position:absolute;top:-13px;right:24px;background:var(--gold);color:var(--iad-navy);font-family:'Sora',sans-serif;font-weight:800;font-size:.7rem;letter-spacing:.02em;padding:6px 14px;border-radius:100px;box-shadow:0 8px 18px -8px rgba(0,0,0,.35);display:flex;align-items:center;gap:5px;}
-.cta-card .fast-badge::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--iad-navy);animation:pulseRingBlue 2s ease-out infinite;}
+.cta-card .locale-pill{display:inline-block;font-size:.72rem;font-weight:700;padding:5px 13px;border-radius:100px;margin-bottom:14px;background:var(--iad-tint);color:var(--iad-navy);}
+.cta-card.featured{background:linear-gradient(140deg,var(--iad-navy) 0%,var(--iad-navy-2) 75%);border:none;}
+.cta-card.featured .pin-watermark{position:absolute;top:6px;right:2px;opacity:.16;width:110px;height:110px;}
+.cta-card.featured h3{color:#fff;position:relative;z-index:1;}
+.cta-card.featured p{color:rgba(255,255,255,.72);position:relative;z-index:1;}
+.cta-card.featured .locale-pill{background:rgba(255,255,255,.15);color:#fff;position:relative;z-index:1;}
+.cta-card.featured .btn.whatsapp{background:var(--gold);color:var(--iad-navy);box-shadow:0 10px 24px -8px rgba(242,169,59,.55);animation:none;position:relative;z-index:1;}
+.cta-card.secondary .btn.whatsapp{background:transparent;color:var(--iad-blue);border:1.5px solid var(--iad-blue);box-shadow:none;animation:none;}
+.cta-card.secondary .btn.whatsapp:hover{background:var(--iad-tint);}
 
 /* ===== network banner ===== */
 .network-banner{position:relative;overflow:hidden;background:linear-gradient(100deg,var(--iad-blue) 0%,var(--iad-cyan) 100%);padding:36px 0;color:#fff;}
@@ -384,16 +391,18 @@ body{padding-bottom:64px;}
   </div>
 
   <div class="cta-grid stagger reveal">
-    <div class="cta-card">
-      <h3>Vous souhaitez rejoindre iad ?</h3>
-      <p>Je vous accompagne pour découvrir le métier de conseiller iad : indépendance, formation, réseau et accompagnement terrain dès le premier jour.</p>
-      <a class="btn whatsapp" href="https://wa.me/33616127718?text=Bonjour%20Francis%2C%20je%20souhaite%20en%20savoir%20plus%20sur%20le%20fait%20de%20rejoindre%20iad." target="_blank" rel="noopener">Me contacter sur WhatsApp →</a>
-    </div>
-    <div class="cta-card">
-      <span class="fast-badge">Réponse sous 24h</span>
+    <div class="cta-card featured">
+      <svg class="pin-watermark" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.2"><path d="M12 21s7-6.5 7-11a7 7 0 10-14 0c0 4.5 7 11 7 11z"/><circle cx="12" cy="10" r="3"/></svg>
+      <span class="locale-pill">À Draveil</span>
       <h3>Une question sur votre bien ou votre quartier ?</h3>
       <p>Je réponds à vos questions sur le marché local, votre projet ou votre quartier — sans engagement.</p>
       <a class="btn whatsapp" href="https://wa.me/33616127718?text=Bonjour%20Francis%2C%20j%27ai%20une%20question%20sur%20mon%20bien%2Fmon%20quartier." target="_blank" rel="noopener">Discuter de mon bien maintenant →</a>
+    </div>
+    <div class="cta-card secondary">
+      <span class="locale-pill">Réseau iad</span>
+      <h3>Vous souhaitez rejoindre iad ?</h3>
+      <p>Je vous accompagne pour découvrir le métier de conseiller iad : indépendance, formation, réseau et accompagnement terrain dès le premier jour.</p>
+      <a class="btn whatsapp" href="https://wa.me/33616127718?text=Bonjour%20Francis%2C%20je%20souhaite%20en%20savoir%20plus%20sur%20le%20fait%20de%20rejoindre%20iad." target="_blank" rel="noopener">Me contacter sur WhatsApp →</a>
     </div>
   </div>
 </div>
