@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://estimation-draveil-montgeron.fr/sitemap.xml
