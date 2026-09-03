@@ -366,6 +366,30 @@ footer{padding:56px 24px 28px;background:var(--iad-navy);color:rgba(255,255,255,
 body{padding-bottom:64px;}
 .float-stack{bottom:76px;}
 }
+
+/* ===== marche immobilier (floating tab + section) ===== */
+.market-banner{display:block;background:linear-gradient(100deg,var(--iad-blue) 0%,var(--iad-cyan) 50%,var(--iad-blue) 100%);background-size:220% auto;text-decoration:none;position:relative;overflow:hidden;animation:gradientShift 7s ease infinite;}
+.market-banner::after{content:"";position:absolute;top:0;left:-60%;width:35%;height:100%;background:linear-gradient(100deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.4) 50%, rgba(255,255,255,0) 100%);transform:skewX(-20deg);animation:bannerShimmer 4s ease-in-out infinite;pointer-events:none;}
+@keyframes bannerShimmer{0%{left:-60%;}50%{left:130%;}100%{left:130%;}}
+.market-banner-inner{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;padding:22px 24px;position:relative;z-index:1;}
+.mb-left{display:flex;align-items:center;gap:16px;}
+.mb-ico{font-size:2rem;flex-shrink:0;display:inline-block;animation:floatY 2.6s ease-in-out infinite;}
+.mb-left strong{display:block;font-family:'Sora',sans-serif;font-size:1.15rem;font-weight:800;color:#fff;}
+.mb-left span{display:block;font-size:.9rem;color:rgba(255,255,255,.92);margin-top:3px;}
+.mb-btn{background:#fff;color:var(--iad-navy);flex-shrink:0;box-shadow:0 12px 26px -10px rgba(0,0,0,.3);animation:pulseRingBlue 2.2s ease-out infinite;}
+.market-banner:hover .mb-btn{transform:translateY(-2px) scale(1.03);}
+@media (max-width:700px){
+  .market-banner-inner{flex-direction:column;align-items:flex-start;padding:20px;gap:16px;}
+  .mb-left strong{font-size:1rem;}
+  .mb-left span{font-size:.82rem;}
+  .mb-btn{width:100%;justify-content:center;}
+}
+.market-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;max-width:1000px;margin:0 auto;}
+.market-box{background:#fff;border:1px solid var(--line);border-radius:16px;padding:26px 22px;text-align:center;box-shadow:0 14px 32px -22px rgba(11,31,90,.3);}
+.market-box .town{font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--iad-blue);margin-bottom:8px;}
+.market-box .big{font-family:'Sora',sans-serif;font-weight:800;font-size:1.35rem;color:var(--iad-navy);}
+.market-box .lbl{font-size:.78rem;color:var(--ink-soft);margin-top:6px;}
+.market-source{font-size:.72rem;color:var(--ink-soft);text-align:center;max-width:680px;margin:26px auto 0;line-height:1.6;}
 </style>
 </head>
 <body>
@@ -383,6 +407,19 @@ body{padding-bottom:64px;}
     <a class="btn ghost" href="https://www.iadfrance.fr/conseiller-immobilier/francis.fernandes" target="_blank" rel="noopener">Ma fiche officielle iad →</a> <a class="btn whatsapp header-cta" href="https://wa.me/33616127718" target="_blank" rel="noopener">Me contacter</a>
   </div>
 </header>
+
+<a href="#marche" class="market-banner reveal in-view" aria-label="Voir les prix du marché immobilier à Draveil et Montgeron">
+  <div class="wrap market-banner-inner">
+    <div class="mb-left">
+      <span class="mb-ico">📊</span>
+      <div>
+        <strong>Prix du marché à Draveil &amp; Montgeron</strong>
+        <span>Maisons et appartements dès 2 950 €/m² — voir le détail par ville</span>
+      </div>
+    </div>
+    <span class="btn mb-btn">Voir les prix →</span>
+  </div>
+</a>
 
 <div class="hero">
   <div class="blob blob1"></div>
@@ -555,6 +592,24 @@ body{padding-bottom:64px;}
     <div class="stat-box"><div class="big">1911</div><div class="lbl">Fondation de Paris-Jardins, 1ʳᵉ cité-jardin de France</div></div>
   </div>
   <div class="heritage-link"><a href="histoire-qualite-de-vie.html">Découvrir l'histoire complète de Draveil →</a></div>
+</section>
+
+<section id="marche" class="reveal">
+  <div class="section-head reveal">
+    <span class="eyebrow">Marché local</span>
+    <h2>Ce qui se passe sur le marché à Draveil et Montgeron</h2>
+    <p>Un aperçu des prix moyens constatés dans le secteur, pour vous donner un premier repère sur votre quartier.</p>
+  </div>
+  <div class="market-grid stagger reveal">
+    <div class="market-box"><div class="town">Draveil · Maisons</div><div class="big">≈ 3 000 – 3 650 €/m²</div><div class="lbl">Prix moyen constaté</div></div>
+    <div class="market-box"><div class="town">Draveil · Appartements</div><div class="big">≈ 2 950 – 3 220 €/m²</div><div class="lbl">Prix moyen constaté</div></div>
+    <div class="market-box"><div class="town">Montgeron · Maisons</div><div class="big">≈ 3 200 – 3 900 €/m²</div><div class="lbl">Prix moyen constaté</div></div>
+    <div class="market-box"><div class="town">Montgeron · Appartements</div><div class="big">≈ 3 670 – 3 850 €/m²</div><div class="lbl">Prix moyen constaté</div></div>
+  </div>
+  <p class="market-source reveal">Moyennes indicatives agrégées à partir de plusieurs plateformes immobilières (MeilleursAgents, PAP, SeLoger), septembre 2026. Ces chiffres donnent une tendance générale par ville — chaque bien a ses propres caractéristiques (état, emplacement, quartier) ; ces données sont informatives et ne remplacent pas un avis de valeur personnalisé, qui nécessite la visite du bien.</p>
+  <div class="reveal" style="text-align:center;margin-top:32px;">
+    <a class="btn whatsapp" href="https://wa.me/33616127718?text=Bonjour%20Francis%2C%20je%20me%20pose%20des%20questions%20sur%20le%20march%C3%A9%20immobilier%20de%20mon%20quartier." target="_blank" rel="noopener">Vous vous demandez ce que ça représente pour votre bien ? Discutons-en →</a>
+  </div>
 </section>
 
 <section id="local" class="reveal">
