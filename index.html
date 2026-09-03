@@ -5,6 +5,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Francis Fernandes - Conseiller iad à Draveil | Rejoindre iad & vie locale</title>
 <meta name="description" content="Francis Fernandes, conseiller indépendant iad à Draveil (La Villa, Mainville, Champrosay, Paris-Jardins) et à Montgeron. Rejoignez iad ou contactez-moi pour toute question sur votre bien ou votre quartier.">
+<!-- Google tag (gtag.js) - Google Ads, avec Consent Mode v2 (aucun cookie publicitaire/mesure tiers depose sans accord, cf. bandeau cookies plus bas) -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    'ad_storage': 'denied',
+    'ad_user_data': 'denied',
+    'ad_personalization': 'denied',
+    'analytics_storage': 'denied'
+  });
+  gtag('js', new Date());
+  gtag('config', 'AW-18298564602');
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18298564602"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -195,7 +209,6 @@ section p{color:var(--ink-soft);max-width:760px;}
 .timeline-item .era{font-family:'Sora',sans-serif;font-weight:800;color:var(--iad-blue);font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px;}
 .timeline-item h4{color:var(--iad-navy);font-size:1.08rem;margin-bottom:6px;}
 .timeline-item p{color:var(--ink-soft);font-size:.94rem;max-width:560px;}
-
 /* vision quote */
 .vision-quote{max-width:760px;margin:0 auto;position:relative;text-align:center;padding:20px;}
 .vision-quote .quote-mark{display:block;font-family:'Sora',sans-serif;font-size:4.5rem;color:var(--iad-blue-2);opacity:.25;line-height:1;font-weight:800;margin-bottom:-18px;}
@@ -408,7 +421,6 @@ body{padding-bottom:64px;}
     </div>
   </div>
 </div>
-
 <section style="padding:64px 24px;border-top:1px solid var(--line);background:var(--iad-tint-2);">
   <div class="wrap reveal" style="max-width:640px;margin:0 auto;">
     <div style="text-align:center;margin-bottom:32px;">
@@ -619,8 +631,7 @@ body{padding-bottom:64px;}
       <div class="body">
         <div class="eyebrow2">Champrosay <span class="fb-tag">Voir sur Facebook</span></div>
         <p>Né en 1798, Eugène Delacroix, chef de file du romantisme français (La Liberté guidant le peuple, La Mort de Sardanapale), a peint les paysages de Champrosay.</p>
-      </div>
-    </a>
+      </div>    </a>
   </div>
 </section>
 
@@ -760,10 +771,63 @@ body{padding-bottom:64px;}
 var banner = document.getElementById('cookieBanner');
 var accept = document.getElementById('cookieAccept');
 var decline = document.getElementById('cookieDecline');
-try{ if(!localStorage.getItem('cookieConsent')){ banner.classList.add('show'); } }catch(e){}
-function setConsent(val){ try{ localStorage.setItem('cookieConsent', val); }catch(e){} banner.classList.remove('show'); }
+function grantAdsConsent(){
+  if (typeof gtag === 'function') {
+    gtag('consent', 'update', {
+      'ad_storage': 'granted',
+      'ad_user_data': 'granted',
+      'ad_personalization': 'granted',
+      'analytics_storage': 'granted'
+    });
+  }
+}
+try{
+  var stored = localStorage.getItem('cookieConsent');
+  if(!stored){ banner.classList.add('show'); }
+  else if(stored === 'accepted'){ grantAdsConsent(); }
+}catch(e){}
+function setConsent(val){
+  try{ localStorage.setItem('cookieConsent', val); }catch(e){}
+  banner.classList.remove('show');
+  if(val === 'accepted'){ grantAdsConsent(); }
+}
 if(accept) accept.addEventListener('click', function(){ setConsent('accepted'); });
 if(decline) decline.addEventListener('click', function(){ setConsent('declined'); });
+})();
+</script>
+
+<script>
+(function(){
+function trackContact(){
+  if (typeof gtag !== 'function') return;
+  gtag('event', 'conversion', {
+    'send_to': 'AW-18298564602/Zcy5CI7oysocEPrft5VE',
+    'value': 1,
+    'currency': 'EUR'
+  });
+}
+document.querySelectorAll('a[href*="wa.me"], a[href^="tel:"], a[href^="mailto:"]').forEach(function(el){
+  el.addEventListener('click', function(){ trackContact(); }, {passive:true});
+});
+var nomInput = document.getElementById('contact-nom');
+var contactForm = nomInput ? nomInput.closest('form') : null;
+if(contactForm){
+  contactForm.addEventListener('submit', function(e){
+    if (typeof gtag !== 'function' || contactForm.dataset.tracked) return;
+    e.preventDefault();
+    contactForm.dataset.tracked = '1';
+    var submitted = false;
+    function doSubmit(){ if(!submitted){ submitted = true; contactForm.submit(); } }
+    gtag('event', 'conversion', {
+      'send_to': 'AW-18298564602/Zcy5CI7oysocEPrft5VE',
+      'value': 1,
+      'currency': 'EUR',
+      'event_callback': doSubmit,
+      'event_timeout': 1000
+    });
+    setTimeout(doSubmit, 1000);
+  });
+}
 })();
 </script>
 
