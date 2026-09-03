@@ -5,6 +5,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Histoire & qualité de vie à Draveil | Francis Fernandes - Conseiller iad</title>
 <meta name="description" content="Histoire, patrimoine et qualité de vie à Draveil : tout savoir sur la ville avant d'acheter ou vendre, par Francis Fernandes, conseiller iad.">
+<!-- Google tag (gtag.js) - Google Ads, avec Consent Mode v2 (aucun cookie publicitaire/mesure tiers depose sans accord, cf. bandeau cookies plus bas) -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    'ad_storage': 'denied',
+    'ad_user_data': 'denied',
+    'ad_personalization': 'denied',
+    'analytics_storage': 'denied'
+  });
+  gtag('js', new Date());
+  gtag('config', 'AW-18298564602');
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18298564602"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -360,10 +374,44 @@ footer{background:var(--iad-navy);color:rgba(255,255,255,.6);padding:56px 0 28px
 var banner = document.getElementById('cookieBanner');
 var accept = document.getElementById('cookieAccept');
 var decline = document.getElementById('cookieDecline');
-try{ if(!localStorage.getItem('cookieConsent')){ banner.classList.add('show'); } }catch(e){}
-function setConsent(val){ try{ localStorage.setItem('cookieConsent', val); }catch(e){} banner.classList.remove('show'); }
+function grantAdsConsent(){
+  if (typeof gtag === 'function') {
+    gtag('consent', 'update', {
+      'ad_storage': 'granted',
+      'ad_user_data': 'granted',
+      'ad_personalization': 'granted',
+      'analytics_storage': 'granted'
+    });
+  }
+}
+try{
+  var stored = localStorage.getItem('cookieConsent');
+  if(!stored){ banner.classList.add('show'); }
+  else if(stored === 'accepted'){ grantAdsConsent(); }
+}catch(e){}
+function setConsent(val){
+  try{ localStorage.setItem('cookieConsent', val); }catch(e){}
+  banner.classList.remove('show');
+  if(val === 'accepted'){ grantAdsConsent(); }
+}
 if(accept) accept.addEventListener('click', function(){ setConsent('accepted'); });
 if(decline) decline.addEventListener('click', function(){ setConsent('declined'); });
+})();
+</script>
+
+<script>
+(function(){
+function trackContact(){
+  if (typeof gtag !== 'function') return;
+  gtag('event', 'conversion', {
+    'send_to': 'AW-18298564602/Zcy5CI7oysocEPrft5VE',
+    'value': 1,
+    'currency': 'EUR'
+  });
+}
+document.querySelectorAll('a[href*="wa.me"], a[href^="tel:"], a[href^="mailto:"]').forEach(function(el){
+  el.addEventListener('click', function(){ trackContact(); }, {passive:true});
+});
 })();
 </script>
 
