@@ -298,6 +298,33 @@ footer{background:var(--iad-navy);color:rgba(255,255,255,.6);padding:56px 0 28px
 .market-box .lbl{font-size:.78rem;color:var(--ink-soft);margin-top:6px;}
 .market-source{font-size:.72rem;color:var(--ink-soft);text-align:center;max-width:680px;margin:26px auto 0;line-height:1.6;}
 
+/* ===== estimation en ligne (mardi/samedi/dimanche, jours de pub) ===== */
+.estim-layout{max-width:640px;margin:0 auto;}
+.gcard{position:relative;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:32px;box-shadow:var(--shadow);}
+.gcard h2{font-size:1.3rem;color:var(--iad-navy);margin-bottom:6px;}
+.gcard p.gcard-sub{color:var(--ink-soft);font-size:.88rem;margin-bottom:22px;}
+.gfield{margin-bottom:16px;}
+.gfield label{display:block;font-weight:600;font-size:.85rem;color:var(--iad-navy);margin-bottom:6px;}
+.gfield input[type="text"],.gfield input[type="tel"],.gfield select{
+  width:100%;padding:12px 14px;border:1.5px solid var(--line);border-radius:10px;
+  font-family:'Inter',sans-serif;font-size:.95rem;transition:border-color .2s ease, box-shadow .2s ease;background:#fff;color:var(--ink);}
+.gfield input:focus,.gfield select:focus{outline:none;border-color:var(--iad-blue);box-shadow:0 0 0 3px rgba(11,95,255,.15);}
+.gfield input[type="range"]{width:100%;accent-color:var(--iad-blue);margin-top:6px;}
+.gconsent{display:flex;align-items:flex-start;gap:10px;margin-bottom:20px;}
+.gconsent input{margin-top:3px;flex-shrink:0;width:16px;height:16px;accent-color:var(--iad-blue);cursor:pointer;}
+.gconsent label{font-size:.78rem;color:var(--ink-soft);line-height:1.5;cursor:pointer;}
+.gcard .btn{justify-content:center;width:100%;font-size:.95rem;}
+.gcard-alt{text-align:center;margin-top:16px;font-size:.82rem;color:var(--ink-soft);}
+.gcard-alt a{color:var(--iad-blue);font-weight:700;}
+.gsuccess{display:none;text-align:center;padding:24px 4px;}
+.gsuccess.show{display:block;}
+.gsuccess .check{width:56px;height:56px;border-radius:50%;background:var(--iad-blue);color:#fff;display:flex;align-items:center;justify-content:center;margin:0 auto 18px;font-size:1.6rem;animation:pulseRingBlue 2.4s ease-out infinite;}
+.gsuccess h2{font-size:1.25rem;color:var(--iad-navy);margin-bottom:10px;}
+.gsuccess p{color:var(--ink-soft);font-size:.9rem;margin-bottom:22px;}
+.estim-calc-block{border-bottom:1px solid var(--line);padding-bottom:20px;margin-bottom:20px;}
+.estim-result{background:var(--iad-tint);border-radius:14px;padding:18px 20px;margin-top:10px;text-align:center;}
+.estim-result-label{font-size:.72rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--iad-blue);margin-bottom:6px;}
+.estim-result-value{font-family:'Sora',sans-serif;font-weight:800;font-size:1.4rem;color:var(--iad-navy);}
 </style>
 </head>
 <body>
@@ -318,7 +345,7 @@ footer{background:var(--iad-navy);color:rgba(255,255,255,.6);padding:56px 0 28px
 </div>
 </header>
 
-<a href="contact.html" class="market-banner reveal in-view" aria-label="Voir les prix du marché immobilier à Draveil">
+<a href="contact.html" class="market-banner reveal in-view" id="marketBanner" aria-label="Voir les prix du marché immobilier à Draveil">
   <div class="wrap market-banner-inner">
     <div class="mb-left">
       <span class="mb-ico">📊</span>
@@ -328,6 +355,19 @@ footer{background:var(--iad-navy);color:rgba(255,255,255,.6);padding:56px 0 28px
       </div>
     </div>
     <span class="btn mb-btn">Voir les prix →</span>
+  </div>
+</a>
+
+<a href="#estimation" class="market-banner reveal in-view" id="estimBanner" style="display:none;" aria-label="Estimer la valeur indicative de mon bien à Draveil ou Montgeron">
+  <div class="wrap market-banner-inner">
+    <div class="mb-left">
+      <span class="mb-ico">🏠</span>
+      <div>
+        <strong>Estimez la valeur indicative de votre bien</strong>
+        <span>Calcul instantané + réponse personnalisée de Francis</span>
+      </div>
+    </div>
+    <span class="btn mb-btn">Estimer mon bien →</span>
   </div>
 </a>
 
@@ -406,6 +446,109 @@ footer{background:var(--iad-navy);color:rgba(255,255,255,.6);padding:56px 0 28px
     <p style="margin:16px 0 0;font-size:.92rem;color:var(--iad-navy);opacity:.78;">Vous préférez ne pas passer par WhatsApp ? <a href="contact.html" style="color:var(--iad-blue);font-weight:700;text-decoration:underline;text-underline-offset:3px;">Laissez-moi vos coordonnées →</a></p>
   </div>
 </section>
+
+<section id="estimation" class="reveal" style="display:none;">
+  <div class="section-head reveal">
+    <span class="eyebrow">Estimation en ligne</span>
+    <h2>Estimez la valeur indicative de votre bien à Draveil ou Montgeron</h2>
+    <p>Un calcul automatique basé sur les moyennes du secteur, puis un retour personnalisé de Francis pour affiner cette évaluation avec vous.</p>
+  </div>
+  <div class="estim-layout reveal-scale">
+    <div class="gcard" id="estimCardWrap">
+      <div id="estimFormState">
+        <form id="estimForm" action="https://docs.google.com/forms/u/0/d/e/1FAIpQLScmXABjzEKdFrOyRekjK5-G9aqVsh6LYv7taVbW6u4EACHjiA/formResponse" method="POST" target="hidden_iframe_estim">
+          <div class="estim-calc-block">
+            <div class="gfield">
+              <label for="estim-ville">Ville</label>
+              <select id="estim-ville" name="entry.1457344892" required>
+                <option value="Draveil">Draveil</option>
+                <option value="Montgeron">Montgeron</option>
+                <option value="Vigneux-sur-Seine">Vigneux-sur-Seine</option>
+                <option value="Ris-Orangis">Ris-Orangis</option>
+                <option value="Juvisy-sur-Orge">Juvisy-sur-Orge</option>
+                <option value="Autre commune à proximité">Autre commune à proximité</option>
+              </select>
+            </div>
+            <div class="gfield">
+              <label for="estim-type">Type de bien</label>
+              <select id="estim-type" name="entry.1172175787" required>
+                <option value="Maison">Maison</option>
+                <option value="Appartement">Appartement</option>
+                <option value="Terrain">Terrain</option>
+                <option value="Autre">Autre</option>
+              </select>
+            </div>
+            <div class="gfield" style="margin-bottom:0;">
+              <label for="estim-surface">Surface approximative : <strong id="estimSurfaceVal">70</strong> m²</label>
+              <input type="range" id="estim-surface" min="20" max="300" step="5" value="70">
+            </div>
+            <div class="estim-result">
+              <div class="estim-result-label">Fourchette indicative pour ce bien</div>
+              <div class="estim-result-value"><span id="estimLow">…</span> € – <span id="estimHigh">…</span> €</div>
+            </div>
+          </div>
+          <div class="gfield">
+            <label for="estim-nom">Nom et prénom</label>
+            <input id="estim-nom" type="text" name="entry.1089525741" required autocomplete="name">
+          </div>
+          <div class="gfield">
+            <label for="estim-tel">Téléphone</label>
+            <input id="estim-tel" type="tel" name="entry.989603001" required autocomplete="tel">
+          </div>
+          <div class="gfield">
+            <label for="estim-adresse">Adresse du bien</label>
+            <input id="estim-adresse" type="text" name="entry.1653002843" required autocomplete="street-address" placeholder="N°, rue">
+          </div>
+          <div class="gfield">
+            <label for="estim-delai">Délai de vente souhaité</label>
+            <select id="estim-delai" name="entry.1616876521" required>
+              <option value="" disabled selected>Choisir…</option>
+              <option>Moins de 3 mois</option>
+              <option>3 à 6 mois</option>
+              <option>6 mois et plus</option>
+              <option>Je m'informe seulement</option>
+            </select>
+          </div>
+          <div class="gconsent">
+            <input type="checkbox" id="estim-consent" name="entry.1210836699" value="J'accepte d'être recontacté(e) par Francis Fernandes (iad France) au sujet de ma demande d'estimation" required>
+            <label for="estim-consent">J'accepte d'être recontacté(e) par Francis Fernandes (iad France) au sujet de ma demande d'estimation.</label>
+          </div>
+          <button type="submit" class="btn">Recevoir mon estimation détaillée</button>
+        </form>
+        <p class="gcard-alt">Vous préférez WhatsApp ? <a href="https://wa.me/33616127718?text=Bonjour%20Francis%2C%20je%20souhaite%20une%20estimation%20pour%20mon%20bien." target="_blank" rel="noopener">Discutons directement →</a></p>
+      </div>
+      <div class="gsuccess" id="estimFormSuccess">
+        <div class="check">✓</div>
+        <h2>Votre demande d'estimation a bien été envoyée</h2>
+        <p>Merci ! Francis revient vers vous rapidement pour affiner cette estimation avec vous.</p>
+        <a class="btn whatsapp" href="https://wa.me/33616127718" target="_blank" rel="noopener" style="justify-content:center;width:100%;">Discuter sur WhatsApp →</a>
+      </div>
+    </div>
+  </div>
+  <p class="market-source reveal">Cette estimation est indicative, calculée automatiquement à partir des moyennes de marché constatées dans le secteur (données de tendance, non certifiées). Elle ne constitue pas un avis de valeur ni une expertise du bien, et ne remplace pas une visite sur place.</p>
+</section>
+<iframe name="hidden_iframe_estim" id="hidden_iframe_estim" style="display:none;" title="envoi formulaire estimation"></iframe>
+<script>
+(function(){
+  function inAdWindow(){
+    var now = new Date();
+    var day = now.getDay(); // 0=dim,1=lun,2=mar,3=mer,4=jeu,5=ven,6=sam
+    var hour = now.getHours();
+    var isAdDay = (day === 0 || day === 2 || day === 6); // dimanche, mardi, samedi
+    return isAdDay && hour >= 9 && hour < 21;
+  }
+  if(inAdWindow()){
+    var marketBanner = document.getElementById('marketBanner');
+    var marcheSection = document.getElementById('marche');
+    var estimBanner = document.getElementById('estimBanner');
+    var estimSection = document.getElementById('estimation');
+    if(marketBanner) marketBanner.style.display = 'none';
+    if(marcheSection) marcheSection.style.display = 'none';
+    if(estimBanner) estimBanner.style.display = '';
+    if(estimSection) estimSection.style.display = '';
+  }
+})();
+</script>
 
 <section class="network-banner">
 <div class="wrap">
@@ -757,6 +900,79 @@ function trackContact(){
 document.querySelectorAll('a[href*="wa.me"], a[href^="tel:"], a[href^="mailto:"]').forEach(function(el){
   el.addEventListener('click', function(){ trackContact(); }, {passive:true});
 });
+})();
+</script>
+
+<script>
+(function(){
+  var ESTIM_PRICES = {
+    'Draveil':   { maison: 3325, appartement: 3085 },
+    'Montgeron': { maison: 3550, appartement: 3760 },
+    'Vigneux-sur-Seine': { maison: 3100, appartement: 3100 },
+    'Ris-Orangis': { maison: 2300, appartement: 2300 },
+    'Juvisy-sur-Orge': { maison: 3300, appartement: 3300 },
+    'Autre commune à proximité': { maison: 3000, appartement: 3000 }
+  };
+  var villeSel = document.getElementById('estim-ville');
+  var typeSel = document.getElementById('estim-type');
+  var surfaceRange = document.getElementById('estim-surface');
+  var surfaceVal = document.getElementById('estimSurfaceVal');
+  var lowEl = document.getElementById('estimLow');
+  var highEl = document.getElementById('estimHigh');
+  if(!villeSel || !typeSel || !surfaceRange) { return; }
+  function fmt(n){ return new Intl.NumberFormat('fr-FR').format(n); }
+  function update(){
+    var villeData = ESTIM_PRICES[villeSel.value] || ESTIM_PRICES['Draveil'];
+    var key = (typeSel.value === 'Appartement') ? 'appartement' : 'maison';
+    var prixM2 = villeData[key];
+    var surface = parseInt(surfaceRange.value, 10);
+    surfaceVal.textContent = surface;
+    var base = prixM2 * surface;
+    var low = Math.round(base * 0.88 / 1000) * 1000;
+    var high = Math.round(base * 1.12 / 1000) * 1000;
+    lowEl.textContent = fmt(low);
+    highEl.textContent = fmt(high);
+  }
+  [villeSel, typeSel, surfaceRange].forEach(function(el){
+    el.addEventListener('input', update);
+  });
+  update();
+})();
+</script>
+
+<script>
+(function(){
+  var form = document.getElementById('estimForm');
+  var stateBox = document.getElementById('estimFormState');
+  var successBox = document.getElementById('estimFormSuccess');
+  if(!form) return;
+  form.addEventListener('submit', function(e){
+    if (form.dataset.tracked) return;
+    e.preventDefault();
+    form.dataset.tracked = '1';
+    var submitted = false;
+    function finish(){
+      if(submitted) return;
+      submitted = true;
+      form.submit();
+      setTimeout(function(){
+        stateBox.style.display = 'none';
+        successBox.classList.add('show');
+      }, 300);
+    }
+    if (typeof gtag === 'function'){
+      gtag('event', 'conversion', {
+        'send_to': 'AW-18298564602/Zcy5CI7oysocEPrft5VE',
+        'value': 1,
+        'currency': 'EUR',
+        'event_callback': finish,
+        'event_timeout': 1000
+      });
+      setTimeout(finish, 1000);
+    } else {
+      finish();
+    }
+  });
 })();
 </script>
 
