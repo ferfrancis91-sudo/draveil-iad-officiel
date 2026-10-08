@@ -218,7 +218,8 @@ footer a:hover{color:#fff}
 .qx-grid .lb{position:absolute;left:18px;right:18px;bottom:16px;z-index:2}
 .qx-grid .lb b{font-family:'Sora';font-size:1.2rem;display:block}
 .qx-grid .lb span{font-size:.86rem;color:#D6E2F7}
-@media(max-width:860px){.qx-grid{grid-template-columns:1fr 1fr;grid-auto-rows:170px}.qx-grid a:first-child{grid-column:span 2;grid-row:span 1}}
+.qx-grid.qx-4{grid-template-columns:repeat(4,1fr);grid-auto-rows:190px}.qx-grid.qx-4 a:first-child{grid-row:auto}
+@media(max-width:860px){.qx-grid.qx-4{grid-template-columns:1fr 1fr}.qx-grid.qx-4 a:first-child{grid-column:auto}.qx-grid{grid-template-columns:1fr 1fr;grid-auto-rows:170px}.qx-grid a:first-child{grid-column:span 2;grid-row:span 1}}
 .g-photos{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:18px 0}
 .g-photos figure{margin:0}
 .g-photos div{aspect-ratio:1;border-radius:12px;background-size:cover;background-position:center}
@@ -257,7 +258,7 @@ footer a:hover{color:#fff}
   <div class="kb"><div style="background-image:url(images/draveil-chateau-moderne-1.jpg)"></div><div style="background-image:url(images/la-villa-meuliere-2.jpg)"></div><div style="background-image:url(images/paris-jardins-chateau-facade.jpg)"></div><div style="background-image:url(images/champrosay-demeure-xixe.jpg)"></div><div style="background-image:url(images/montgeron-centre-historique.jpg)"></div></div>
   <div class="wrap hero-in">
     <div class="hero-txt">
-      <span class="eyebrow">Draveil · Montgeron · Vigneux-sur-Seine</span>
+      <span class="eyebrow">Draveil · Montgeron · Vigneux · Juvisy · Ris-Orangis · Soisy</span>
       <h1>Votre projet immobilier, avec <em>quelqu'un du quartier.</em></h1>
       <p class="lead">Je vis à Draveil depuis plus de 25 ans. Je prends le temps de comprendre votre situation, et je reste votre seul interlocuteur du premier café jusqu'à la remise des clés.</p>
       <div class="hero-ctas">
@@ -333,6 +334,14 @@ footer a:hover{color:#fff}
       <a href="mainville.html"><div class="im" style="background-image:url(images/mainville-place-draveil.jpg)"></div><div class="lb"><b>Mainville</b><span>L'esprit village</span></div></a>
       <a href="montgeron.html"><div class="im" style="background-image:url(images/montgeron-centre-historique.jpg)"></div><div class="lb"><b>Montgeron</b><span>Centre historique</span></div></a>
     </div>
+
+    <h3 class="reveal" style="font-family:'Sora';color:var(--iad-navy);font-size:1.25rem;margin:44px 0 16px">Les communes voisines</h3>
+    <div class="qx-grid qx-4 reveal">
+      <a href="vigneux-sur-seine.html"><div class="im" style="background-image:url(images/vigneux-barrage-seine.jpg)"></div><div class="lb"><b>Vigneux-sur-Seine</b><span>Entre Seine et lacs</span></div></a>
+      <a href="juvisy-sur-orge.html"><div class="im" style="background-image:url(images/juvisy-chateau-observatoire-facade.jpg)"></div><div class="lb"><b>Juvisy-sur-Orge</b><span>Observatoire Flammarion</span></div></a>
+      <a href="ris-orangis.html"><div class="im" style="background-image:url(images/ris-orangis-mairie-etang.jpg)"></div><div class="lb"><b>Ris-Orangis</b><span>Château de Fromont</span></div></a>
+      <a href="soisy-sur-seine.html"><div class="im" style="background-image:url(images/soisy-chateau-grand-veneur-etang.jpg)"></div><div class="lb"><b>Soisy-sur-Seine</b><span>Village & forêt de Sénart</span></div></a>
+    </div>
   </div>
 </section>
 
@@ -358,7 +367,7 @@ footer a:hover{color:#fff}
       <details><summary>Quels documents faut-il préparer ?</summary><p>Le titre de propriété, la dernière taxe foncière et les diagnostics techniques. En copropriété, s'ajoutent les procès-verbaux d'assemblée générale et le relevé de charges. Pas d'inquiétude : je vous aide à tout réunir.</p></details>
       <details><summary>Combien de temps faut-il pour aboutir ?</summary><p>Ça dépend surtout du bon positionnement de prix, de l'état du bien et du quartier. Après la visite, je vous donne un calendrier réaliste pour votre cas.</p></details>
       <details><summary>Pourquoi un conseiller iad plutôt qu'une agence ?</summary><p>Vous avez un seul interlocuteur, indépendant, qui suit votre dossier de A à Z, avec la force du 1er réseau de mandataires en France pour la diffusion.</p></details>
-      <details><summary>Sur quelles communes intervenez-vous ?</summary><p>Draveil et ses quartiers (La Villa, Mainville, Champrosay, Paris-Jardins), Montgeron, Vigneux-sur-Seine, Ris-Orangis et Juvisy-sur-Orge.</p></details>
+      <details><summary>Sur quelles communes intervenez-vous ?</summary><p>Draveil et ses quartiers (La Villa, Mainville, Champrosay, Paris-Jardins), Montgeron, <a href="vigneux-sur-seine.html">Vigneux-sur-Seine</a>, <a href="juvisy-sur-orge.html">Juvisy-sur-Orge</a>, <a href="ris-orangis.html">Ris-Orangis</a> et <a href="soisy-sur-seine.html">Soisy-sur-Seine</a>.</p></details>
     </div>
   </div>
 </section>
@@ -387,7 +396,7 @@ footer a:hover{color:#fff}
   <div class="wrap">
     <div class="ft">
       <div><h4>Francis Fernandes</h4><p>Conseiller immobilier indépendant du réseau iad, au service de Draveil et de ses quartiers.</p><p style="margin-top:10px">06 16 12 77 18<br>francis.fernandes@iadfrance.fr</p></div>
-      <div><h4>Quartiers & villes</h4><ul><li><a href="la-villa.html">La Villa</a></li><li><a href="mainville.html">Mainville</a></li><li><a href="champrosay.html">Champrosay</a></li><li><a href="paris-jardins.html">Paris-Jardins</a></li><li><a href="montgeron.html">Montgeron</a></li></ul></div>
+      <div><h4>Quartiers & villes</h4><ul><li><a href="la-villa.html">La Villa</a></li><li><a href="mainville.html">Mainville</a></li><li><a href="champrosay.html">Champrosay</a></li><li><a href="paris-jardins.html">Paris-Jardins</a></li><li><a href="montgeron.html">Montgeron</a></li><li><a href="vigneux-sur-seine.html">Vigneux-sur-Seine</a></li><li><a href="juvisy-sur-orge.html">Juvisy-sur-Orge</a></li><li><a href="ris-orangis.html">Ris-Orangis</a></li><li><a href="soisy-sur-seine.html">Soisy-sur-Seine</a></li></ul></div>
       <div><h4>Vie locale</h4><ul><li><a href="histoire-qualite-de-vie.html">Histoire & qualité de vie</a></li><li><a href="ecoles-carte-scolaire.html">Écoles & carte scolaire</a></li><li><a href="calendrier.html">Agenda</a></li><li><a href="carte-interactive.html">Carte interactive</a></li><li><a href="https://www.iadfrance.fr/conseiller-immobilier/francis.fernandes">Ma fiche officielle iad</a></li></ul></div>
     </div>
     <div class="ft-bottom">© 2026 Francis Fernandes · Conseiller iad indépendant · <a href="mentions-legales.html">Mentions légales & confidentialité</a></div>
