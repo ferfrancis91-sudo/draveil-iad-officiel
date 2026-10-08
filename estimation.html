@@ -400,6 +400,7 @@ button.btn{border:none;cursor:pointer;font-family:inherit}
           <div class="fld"><label for="msg">Un détail à ajouter ? <span style="font-weight:400;color:var(--ink-soft)">(facultatif)</span></label><textarea id="msg" name="Message" rows="3" placeholder="Travaux récents, vue, situation particulière…"></textarea></div>
           <label class="consent"><input type="checkbox" name="Consentement" value="Oui" required><span>J'accepte d'être recontacté(e) par Francis Fernandes, conseiller iad France, au sujet de ma demande d'estimation. <span class="req">*</span></span></label>
           <p class="err">Merci de renseigner vos prénom, nom, téléphone et d'accepter d'être recontacté(e).</p>
+          <p class="err" id="telErr">Merci d’indiquer un numéro de téléphone français valide (ex. 06 12 34 56 78).</p>
           <div class="nav-btns"><button type="button" class="btn-back" data-prev>← Retour</button><button type="submit" class="btn btn-gold">Recevoir mon estimation gratuite</button></div>
           <p class="legal">Estimation gratuite et sans engagement. Une estimation à distance reste indicative : je viens voir votre bien pour vous donner un prix précis. Vos données servent uniquement à répondre à votre demande et ne sont jamais revendues. <a href="mentions-legales.html" style="text-decoration:underline">Mentions légales & confidentialité</a>.</p>
         </div>
@@ -466,9 +467,19 @@ button.btn{border:none;cursor:pointer;font-family:inherit}
     d.append('entry.1210836699',"J'accepte d'être recontacté(e) par Francis Fernandes (iad France) au sujet de ma demande d'estimation");
     try{return fetch(GF,{method:'POST',mode:'no-cors',body:d});}catch(err){return Promise.resolve();}
   }
+  var loadedAt=Date.now();
   f.addEventListener('submit',function(e){
     e.preventDefault();
     if(!valid(3))return;
+    // --- Anti-spam ---
+    var hp=f.querySelector('[name="_honey"]');
+    var txt=[val('Prenom'),val('Nom'),val('Adresse'),val('Message')].join(' ');
+    if((hp&&hp.value!=='')||(Date.now()-loadedAt)<5000||/https?:|www\.|<a\s|\[url/i.test(txt)){
+      f.style.display='none';document.getElementById('done').style.display='block';return;} // robot : rien n'est envoyé
+    var tel=val('Telephone').replace(/[\s.\-()]/g,'');
+    var te=document.getElementById('telErr');
+    if(!/^(?:(?:\+|00)33|0)[1-9]\d{8}$/.test(tel)){te.style.display='block';return;}
+    te.style.display='none';
     if(location.hostname.indexOf('estimation-draveil-montgeron.fr')===-1){ // aperçu : rien n'est envoyé
       f.style.display='none';document.getElementById('done').style.display='block';return;}
     var btn=f.querySelector('button[type=submit]');btn.disabled=true;btn.textContent='Envoi en cours…';

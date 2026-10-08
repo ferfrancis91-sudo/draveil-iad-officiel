@@ -223,6 +223,7 @@ footer a:hover{color:#fff;}
           <h2>Restons en contact</h2>
           <p class="gcard-sub">Vos coordonnées restent strictement confidentielles.</p>
           <form id="contactForm" action="https://docs.google.com/forms/d/e/1FAIpQLScArz7AwTHK-q_ftQS9tBMu4tfjjHMgccQ7M8_Jt8dyMHavfA/formResponse" method="POST" target="hidden_iframe">
+            <div style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden" aria-hidden="true"><label for="contact-website">Site web</label><input id="contact-website" type="text" tabindex="-1" autocomplete="off"></div>
             <div class="gfield">
               <label for="contact-nom">Nom</label>
               <input id="contact-nom" type="text" name="entry.1515768573" required autocomplete="name">
@@ -243,6 +244,7 @@ footer a:hover{color:#fff;}
               <input type="checkbox" id="contact-consent" name="entry.2106893245" value="J'accepte d'être recontacté(e) par Francis Fernandes au sujet de ma demande" required>
               <label for="contact-consent">J'accepte d'être recontacté(e) par Francis Fernandes au sujet de ma demande.</label>
             </div>
+            <p id="contact-err" style="display:none;color:#C62828;font-size:.85rem;margin:0 0 10px"></p>
             <button type="submit" class="btn">Envoyer ma demande</button>
           </form>
           <p class="gcard-alt">Vous préférez WhatsApp ? <a href="https://wa.me/33616127718" target="_blank" rel="noopener">Discutons directement →</a></p>
@@ -401,7 +403,22 @@ var form = document.getElementById('contactForm');
 var stateBox = document.getElementById('gformState');
 var successBox = document.getElementById('gformSuccess');
 if(form){
-  form.addEventListener('submit', function(){
+  var loadedAt = Date.now();
+  var errBox = document.getElementById('contact-err');
+  function showSuccess(){ stateBox.style.display = 'none'; successBox.classList.add('show'); }
+  form.addEventListener('submit', function(e){
+    // --- Anti-spam ---
+    var tel = document.getElementById('contact-tel').value.replace(/[\s.\-()]/g,'');
+    var txt = [document.getElementById('contact-nom').value, document.getElementById('contact-ville').value, document.getElementById('contact-msg').value].join(' ');
+    var isBot = document.getElementById('contact-website').value !== '' || (Date.now() - loadedAt) < 3000 || /https?:|www\.|<a\s|\[url/i.test(txt);
+    if (isBot) { e.preventDefault(); showSuccess(); return; } // le robot croit que c'est envoyé, rien n'arrive dans le Sheet
+    if (!/^(?:(?:\+|00)33|0)[1-9]\d{8}$/.test(tel)) {
+      e.preventDefault();
+      errBox.textContent = 'Merci d\u2019indiquer un numéro de téléphone français valide (ex. 06 12 34 56 78).';
+      errBox.style.display = 'block';
+      return;
+    }
+    errBox.style.display = 'none';
     if (typeof gtag === 'function') {
       gtag('event', 'conversion', {
         'send_to': 'AW-18298564602/Zcy5CI7oysocEPrft5VE',
@@ -409,10 +426,7 @@ if(form){
         'currency': 'EUR'
       });
     }
-    setTimeout(function(){
-      stateBox.style.display = 'none';
-      successBox.classList.add('show');
-    }, 900);
+    setTimeout(showSuccess, 900);
   });
 }
 })();
