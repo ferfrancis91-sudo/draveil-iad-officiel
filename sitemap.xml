@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://estimation-draveil-montgeron.fr/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://estimation-draveil-montgeron.fr/estimation.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://estimation-draveil-montgeron.fr/guide-estimation.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://estimation-draveil-montgeron.fr/contact.html</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
   <url><loc>https://estimation-draveil-montgeron.fr/la-villa.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://estimation-draveil-montgeron.fr/mainville.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://estimation-draveil-montgeron.fr/champrosay.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
