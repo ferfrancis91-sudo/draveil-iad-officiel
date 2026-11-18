@@ -6,8 +6,6 @@ ORG:iad France
 TITLE:Conseiller immobilier iad
 TEL;TYPE=CELL,VOICE:+33 6 73 05 77 82
 EMAIL;TYPE=WORK:thierry.mariette@iadfrance.fr
-item1.URL:https://www.iadfrance.fr/conseiller-immobilier/thierry.mariette
-item1.X-ABLabel:Profil iad
 item2.URL:https://wa.me/33673057782
 item2.X-ABLabel:WhatsApp
 item3.URL:https://www.instagram.com/thierrymariettepro/
